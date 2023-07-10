@@ -2,16 +2,326 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+:root {
+  font-family: "Inter Regular";
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #1b1b1b;
+  --scrollBarColorDark: #434343;
+  --scrollBarColorLight: #ebebeb;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-black: "#1B1B1B";
+  --color-white: "#FFFFFF";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.body {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+/* * {
+  scrollbar-width: 6px;
+  scrollbar-color: var(--secondary);
+} */
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-inner-spin-button {
+  color-scheme: dark;
+}
+
+.dark [type="time"]::-webkit-calendar-picker-indicator {
+  color-scheme: dark;
+}
+
+/* .time-picker-light {
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-inner-spin-button {
+    color-scheme: var(--scrollBarColorLight);
+  }
+
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    color-scheme: var(--scrollBarColorLight);
+  }
+} */
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* .darkScrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollBarColorDark);
+  border-radius: 17px;
+}
+
+.lightScrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollBarColorLight);
+  border-radius: 17px;
+} */
+
+/* Dark mode scrollbar */
+.dark .darkScrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollBarColorDark);
+  border-radius: 17px;
+}
+
+/* Light mode scrollbar */
+.light .lightScrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollBarColorLight);
+  border-radius: 17px;
+}
+
+/* Dark mode scrollbar - Firefox */
+.dark .darkScrollbar {
+  scrollbar-color: var(--scrollBarColorDark) transparent;
+  scrollbar-width: thin;
+}
+
+/* Light mode scrollbar - Firefox */
+.light .lightScrollbar {
+  scrollbar-color: var(--scrollBarColorLight) transparent;
+  scrollbar-width: thin;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  scrollbar-width: 6px;
+  scrollbar-color: var(--secondary);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+.toggleBtn .checkInput {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggleBtn .checkLabel {
+  cursor: pointer;
+  width: 30px;
+  height: 17px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.toggleBtn .checkLabel::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 13px;
+  height: 13px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.toggleBtn .checkInput:checked + .checkLabel:after {
+  left: calc(100% - 3px);
+  transform: translateX(-100%);
+}
+
+.fill-black {
+  fill: #1b1b1b;
+}
+
+.fill-white {
+  fill: #fff;
+}
+
+.rounded-10 {
+  border-radius: 10px;
+}
+
+.text-8-400 {
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 10px;
+}
+
+.text-12-500 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 10px;
+}
+
+.text-10-400 {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.text-10-500 {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.text-10-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.text-10-700 {
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.text-11-400 {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.text-11-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 150%;
+}
+
+.text-12-500 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.text-12-400 {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.text-13-400 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.text-13-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.text-13-400 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.text-12-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.text-14-400 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.text-14-500 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.text-14-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.text-15-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.text-16-500 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.text-16-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.text-18-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.text-20-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.text-24-600 {
+  font-family: "Inter Semibold";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.text-32-700 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.backgroundImage-shadow {
+  filter: drop-shadow(0px 380px 152px rgba(0, 0, 0, 0.01))
+    drop-shadow(0px 214px 128px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 95px 95px rgba(0, 0, 0, 0.09))
+    drop-shadow(0px 24px 52px rgba(0, 0, 0, 0.1))
+    drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
 }
