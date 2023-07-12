@@ -25,17 +25,12 @@ module.exports = {
         lightSecondary: "#F8F8F8",
         lightTertiary: "#000000",
         lightOutline: "#EBEBEB",
-      },
-      fontFamily: {
-        "inter-black": ["Inter Black", "sans-serif"],
-        "inter-bold": ["Inter Bold", "sans-serif"],
-        "inter-extra-bold": ["Inter Extra Bold", "sans-serif"],
-        "inter-extra-light": ["Inter Extra Light", "sans-serif"],
-        "inter-light": ["Inter Light", "sans-serif"],
-        "inter-medium": ["Inter Medium", "sans-serif"],
-        "inter-regular": ["Inter Regular", "sans-serif"],
-        "inter-semibold": ["Inter Semibold", "sans-serif"],
-        "inter-thin": ["Inter Thin", "sans-serif"],
+
+        // latest
+        layoutBackground: "#f3f6fc",
+
+        // theme
+        themeColor: "#635fc7"
       },
     },
   },

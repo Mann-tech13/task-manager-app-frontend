@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import {
-  DownArrowModal,
   UnbundleLogo,
 } from "../../assets/icons/icons";
 import { SidebarMenuOptions } from "./SidebarMenu";
@@ -11,12 +10,9 @@ import SidebarIcon from "./SidebarIcon";
 function Sidebar(props) {
   const navigate = useNavigate();
   const [activeHeader, setActiveHeader] = useState("");
-  const [activeSubHeader, setActiveSubHeader] = useState("");
-  const [adminName, setAdminName] = useState("");
 
   useEffect(() => {
     setActiveHeader(window.location.pathname.split("/")[1]);
-    setActiveSubHeader(window.location.pathname.split("/")[2]);
   }, []);
   useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
@@ -34,7 +30,7 @@ function Sidebar(props) {
   const isMobile = width <= 768;
 
   return (
-    <div className="dark:bg-primary bg-lightPrimary">
+    <div className="dark:bg-primary bg-lightPrimary h-screen sm:pt-[23px] pt-[13px]  pl-[20px] pr-[15px]  sm:pl-[37px] sm:pr-[11px] ">
       <div
         className="ml-[21px] mb-[30px] cursor-pointer hidden sm:block"
         onClick={() => {
@@ -47,7 +43,7 @@ function Sidebar(props) {
       <div className="flex items-center dark:bg-secondary bg-lightSecondary rounded-10 justify-between pb-[11px] pl-[21px] pt-[9px] pr-[17px] mb-[18px] sm:mb-[16px]">
         <div className="flex flex-col gap-1">
           <p className="text-14-500 dark:text-lightPrimary text-textDark">
-            {adminName.toUpperCase()}
+            Mann
           </p>
           <p className="text-11-400 dark:text-textSecondary text-textDark">
             All Boards
@@ -61,9 +57,9 @@ function Sidebar(props) {
             <li key={i} className="cursor-pointer">
               <Link to={sidebarOptions.route}>
                 <div
-                  className={`text-16-500 flex gap-2 items-center px-[15px] py-2 rounded-lg ${
+                  className={`text-18-600 flex gap-2 items-center px-[15px] py-3 rounded-lg ${
                     activeHeader && sidebarOptions.route.includes(activeHeader)
-                      ? "dark:text-textSecondary text-textDark dark:bg-secondary bg-lightSecondary"
+                      ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-themeColor"
                       : "dark:text-textQuad text-textGreyLight"
                   }`}
                   onClick={() => {
@@ -75,8 +71,8 @@ function Sidebar(props) {
                     fill={
                       activeHeader &&
                       sidebarOptions.route.includes(activeHeader)
-                        ? "#36B697"
-                        : "#9B9B9B"
+                        ? "#ffffff"
+                        : "#000000"
                     }
                   />
                   <p>{sidebarOptions.option}</p>

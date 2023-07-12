@@ -10,14 +10,14 @@ function Layout(props) {
     setHamburger((isHamburger) => !isHamburger);
   }
   return (
-    <div className="relative flex dark:bg-primary bg-lightPrimary">
-      <div className="h-fit max-h-screen min-w-[20%] hidden sm:block z-50 sticky top-0 pl-[20px] pr-[15px] pt-[13px] sm:pl-[37px] sm:pr-[11px] sm:pt-[23px]">
+    <div className="relative flex dark:bg-primary bg-layoutBackground">
+      <div className="h-fit max-h-screen min-w-[20%] hidden sm:block z-50 sticky top-0">
         <Sidebar />
       </div>
       <div className={`flex-1 h-fit flex flex-col`}>
         <Header toggleHamburger={toggleHamburger} isHamburger={isHamburger} />
         {isHamburger ? (
-          <div className="dark:bg-primary bg-lightPrimary block sm:hidden absolute w-full top-[60px] z-10 h-screen max-h-screen pl-[20px] pr-[15px] pt-[13px] sm:pl-[37px] sm:pr-[11px] sm:pt-[23px]">
+          <div className="dark:bg-primary bg-lightPrimary block sm:hidden absolute w-full top-[60px] z-10 h-screen max-h-screen ">
             <Sidebar toggleHamburger={toggleHamburger} />
           </div>
         ) : (

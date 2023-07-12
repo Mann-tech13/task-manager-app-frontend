@@ -1,17 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
 import {
   Cross,
   Hamburger,
-  HamburgerLight,
-  UnbundleLightLogo,
   UnbundleLogo,
 } from "../../assets/icons/icons";
 import { useNavigate } from "react-router-dom";
 
 function Header(props) {
   const navigate = useNavigate();
-  const [adminInitial, setAdminInitial] = useState("");
 
 
   return (
@@ -28,7 +24,7 @@ function Header(props) {
               <p
                 className={`text-textDark bg-textTertiary w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
               >
-                {adminInitial}
+                M
               </p>
             </div>
           </div>
@@ -58,7 +54,7 @@ function Header(props) {
           <p
             className={`text-textDark  bg-textTertiary w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
           >
-            {adminInitial}
+            M
           </p>
         </div>
       </nav>
