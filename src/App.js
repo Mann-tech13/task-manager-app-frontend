@@ -1,14 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Hello from "./pages/Hello"
+import TaskBoard from "./pages/TaskBoard"
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route exact path="/header" element={}/> */}
-        {/* <Route exact path="/sidebar" element={}/> */}
-        <Route exact path="/manage" element={<Hello/>}/>
+        <Route exact path="/manage" element={<TaskBoard/>}/>
       </Routes>
     </Router>
     
