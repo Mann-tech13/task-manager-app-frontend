@@ -18,19 +18,23 @@ module.exports = {
         textPenta: "#AEAEAE",
         textDark: "#111111",
         textGreyLight: "#737373",
-        eventsColor: "#EFEFEF",
-
+        
         // light theme
         lightPrimary: "#ffffff",
         lightSecondary: "#F8F8F8",
         lightTertiary: "#000000",
         lightOutline: "#EBEBEB",
-
+        
         // latest
         layoutBackground: "#f3f6fc",
-
+        
         // theme
-        themeColor: "#635fc7"
+        theme: "#635fc7",
+        themeHover: "#514cba",
+        
+        lightGrey: "#EFEFEF",
+        lightGreyHover: "#ededed"
+
       },
     },
   },

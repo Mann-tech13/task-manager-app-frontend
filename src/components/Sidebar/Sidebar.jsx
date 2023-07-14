@@ -59,7 +59,7 @@ function Sidebar(props) {
                 <div
                   className={`text-18-600 flex gap-2 items-center px-[15px] py-3 rounded-lg ${
                     activeHeader && sidebarOptions.route.includes(activeHeader)
-                      ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-themeColor"
+                      ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-theme"
                       : "dark:text-textQuad text-textGreyLight"
                   }`}
                   onClick={() => {

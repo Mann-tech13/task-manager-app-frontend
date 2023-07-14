@@ -20,7 +20,7 @@ function TaskBoard() {
         <div className="flex flex-col gap-4 max-w-[300px]">
           <div className="flex flex-row justify-between items-center">
             <p> Todo</p>
-            <p className="grid place-content-center bg-themeColor text-textPrimary rounded-full px-2 cursor-pointer" onClick={() => setAddTaskModal(true)}>+</p>
+            <p className="grid place-content-center bg-theme text-textPrimary rounded-full px-2 cursor-pointer" onClick={() => setAddTaskModal(true)}>+</p>
           </div>
           <div className="grid grid-cols-1 gap-4">
             {mockTaskTodo.map((data, i) => {
