@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import { Form, Formik, useFormik } from "formik";
 import * as yup from "yup";
 import { CrossIcon } from "../../assets/icons/icons";
-import dropDownIcon from "../../assets/icons/angle-down.svg";
+import dropDownIcon from "../../assets/angle-down.svg";
 
 const validationSchema = yup.object({
   task: yup.string().required("Task is required"),
