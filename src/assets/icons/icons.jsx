@@ -1300,17 +1300,78 @@ export function ManageSVG(props) {
 
 export function RightForwardSVG(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" width="26" height="26">
-  <g>
-    <polygon fill={props.fill} points="38.7,34.4 32.1,34.4 47.7,50 32,65.6 38.7,65.6 54.5,50" />
-    <polygon fill={props.fill} points="68.7,24 68.7,30.5 88.1,50 68.6,69.5 68.6,76 94.9,50" />
-    <polygon fill={props.fill} points="11.8,34.4 5.2,34.4 20.7,50 5.1,65.6 11.7,65.6 27.5,50" />
-    <polygon fill={props.fill} points="25.3,34.4 18.6,34.4 34.2,50 18.6,65.6 25.2,65.6 41,50" />
-    <polygon fill={props.fill} points="52.2,34.4 45.6,34.4 61.1,50 45.5,65.6 52.1,65.6 68,50" />
-    <polygon fill={props.fill} points="65.7,34.4 59.1,34.4 74.6,50 59,65.6 65.7,65.6 81.4,50" />
-  </g>
-</svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      viewBox="0 0 100 100"
+      width="26"
+      height="26"
+    >
+      <g>
+        <polygon
+          fill={props.fill}
+          points="38.7,34.4 32.1,34.4 47.7,50 32,65.6 38.7,65.6 54.5,50"
+        />
+        <polygon
+          fill={props.fill}
+          points="68.7,24 68.7,30.5 88.1,50 68.6,69.5 68.6,76 94.9,50"
+        />
+        <polygon
+          fill={props.fill}
+          points="11.8,34.4 5.2,34.4 20.7,50 5.1,65.6 11.7,65.6 27.5,50"
+        />
+        <polygon
+          fill={props.fill}
+          points="25.3,34.4 18.6,34.4 34.2,50 18.6,65.6 25.2,65.6 41,50"
+        />
+        <polygon
+          fill={props.fill}
+          points="52.2,34.4 45.6,34.4 61.1,50 45.5,65.6 52.1,65.6 68,50"
+        />
+        <polygon
+          fill={props.fill}
+          points="65.7,34.4 59.1,34.4 74.6,50 59,65.6 65.7,65.6 81.4,50"
+        />
+      </g>
+    </svg>
+  );
+}
 
-
+export function LeftForwardSVG(props) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      viewBox="0 0 100 100"
+      width="14"
+      height="14"
+    >
+      <g>
+        <polygon
+          fill="#000000"
+          points="61.3,65.6 55.7,65.6 71.3,50 55.7,34.4 61.3,34.4 77.1,50"
+        />
+        <polygon
+          fill="#000000"
+          points="31.3,76 31.3,69.5 11.9,50 31.4,30.5 31.4,24 5.1,50"
+        />
+        <polygon
+          fill="#000000"
+          points="88.2,65.6 94.8,65.6 79.3,50 94.9,34.4 88.3,34.4 72.5,50"
+        />
+        <polygon
+          fill="#000000"
+          points="74.7,65.6 81.4,65.6 65.8,50 81.4,34.4 74.8,34.4 59,50"
+        />
+        <polygon
+          fill="#000000"
+          points="47.8,65.6 54.4,65.6 38.9,50 54.5,34.4 47.9,34.4 32,50"
+        />
+        <polygon
+          fill="#000000"
+          points="34.3,65.6 40.9,65.6 25.4,50 40.9,34.4 34.3,34.4 18.6,50"
+        />
+      </g>
+    </svg>
   );
 }
