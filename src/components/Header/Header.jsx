@@ -12,7 +12,7 @@ function Header(props) {
 
   return (
     <>
-      <nav className="z-50 sm:sticky fixed w-full top-0 pr-[67px] py-[21px] border-gray-200 dark:bg-primary bg-lightPrimary hidden sm:block">
+      <nav className="z-50 sm:sticky h-[100px] fixed w-full top-0 pr-[67px] py-[21px] border-gray-200 dark:bg-primary bg-lightPrimary hidden sm:block">
         <div className="flex items-center justify-end">
           <div className="flex gap-[20px] items-center lg:order-2">
             <div

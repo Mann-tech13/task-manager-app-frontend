@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import {
-  UnbundleLogo,
-} from "../../assets/icons/icons";
 import { SidebarMenuOptions } from "./SidebarMenu";
 import { Link, useNavigate } from "react-router-dom";
 import SidebarIcon from "./SidebarIcon";
+// import planify from "../../assets/Planify.svg"
 
 function Sidebar(props) {
   const navigate = useNavigate();
@@ -30,25 +28,14 @@ function Sidebar(props) {
   const isMobile = width <= 768;
 
   return (
-    <div className="dark:bg-primary bg-lightPrimary h-screen sm:pt-[23px] pt-[13px]  pl-[20px] pr-[15px]  sm:pl-[37px] sm:pr-[11px] ">
+    <div className="dark:bg-primary bg-lightPrimary h-screen sm:pt-[23px] pt-[13px] flex flex-col gap-8  pl-[20px] pr-[15px]  sm:pl-6 sm:pr-3 ">
       <div
-        className="ml-[21px] mb-[30px] cursor-pointer hidden sm:block"
+        className="mx-5 mb-[30px] cursor-pointer hidden sm:block heading text-textDark"
         onClick={() => {
           navigate("/");
         }}
       >
-        <UnbundleLogo />
-      </div>
-
-      <div className="flex items-center dark:bg-secondary bg-lightSecondary rounded-10 justify-between pb-[11px] pl-[21px] pt-[9px] pr-[17px] mb-[18px] sm:mb-[16px]">
-        <div className="flex flex-col gap-1">
-          <p className="text-14-500 dark:text-lightPrimary text-textDark">
-            Mann
-          </p>
-          <p className="text-11-400 dark:text-textSecondary text-textDark">
-            All Boards
-          </p>
-        </div>
+        Planify
       </div>
 
       <ul className="flex flex-col gap-[9px]">

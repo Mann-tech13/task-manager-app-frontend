@@ -1337,39 +1337,39 @@ export function RightForwardSVG(props) {
   );
 }
 
-export function LeftForwardSVG(props) {
+export function LeftBackwardSVG(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       viewBox="0 0 100 100"
-      width="14"
-      height="14"
+      width="26"
+      height="26"
     >
       <g>
         <polygon
-          fill="#000000"
-          points="61.3,65.6 55.7,65.6 71.3,50 55.7,34.4 61.3,34.4 77.1,50"
+          fill={props.fill}
+          points="61.3, 65.6, 67.9, 65.6, 52.3, 50, 68, 34.4, 61.3, 34.4, 45.5, 50"
         />
         <polygon
-          fill="#000000"
-          points="31.3,76 31.3,69.5 11.9,50 31.4,30.5 31.4,24 5.1,50"
+          fill={props.fill}
+          points="31.3,24 31.3,30.5 11.9,50 31.4,69.5 31.4,76 5.1,50"
         />
         <polygon
-          fill="#000000"
-          points="88.2,65.6 94.8,65.6 79.3,50 94.9,34.4 88.3,34.4 72.5,50"
+          fill={props.fill}
+          points="88.2,34.4 94.8,34.4 79.3,50 94.9,65.6 88.3,65.6 72.5,50"
         />
         <polygon
-          fill="#000000"
-          points="74.7,65.6 81.4,65.6 65.8,50 81.4,34.4 74.8,34.4 59,50"
+          fill={props.fill}
+          points="74.7,34.4 81.4,34.4 65.8,50 81.4,65.6 74.8,65.6 59,50"
         />
         <polygon
-          fill="#000000"
-          points="47.8,65.6 54.4,65.6 38.9,50 54.5,34.4 47.9,34.4 32,50"
+          fill={props.fill}
+          points="47.8,34.4 54.4,34.4 38.9,50 54.5,65.6 47.9,65.6 32,50"
         />
         <polygon
-          fill="#000000"
-          points="34.3,65.6 40.9,65.6 25.4,50 40.9,34.4 34.3,34.4 18.6,50"
+          fill={props.fill}
+          points="34.3,34.4 40.9,34.4 25.4,50 40.9,65.6 34.3,65.6 18.6,50"
         />
       </g>
     </svg>

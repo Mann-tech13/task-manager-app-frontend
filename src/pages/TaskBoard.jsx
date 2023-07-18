@@ -1,11 +1,5 @@
 import React, { useState } from "react";
 import Layout from "../components/layout/Layout";
-// import {
-//   mockTasksToDo,
-//   mockTasksInProgress,
-//   mockTasksDone,
-// } from "../mock/MOCK_TASKS";
-// import TaskModal from "../components/modal/TaskModal";
 import TaskModal from "../components/modal/TaskModal";
 import DataDisplay from "../components/data/DataDisplay";
 import { useEffect } from "react";

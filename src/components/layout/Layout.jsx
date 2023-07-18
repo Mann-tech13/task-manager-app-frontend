@@ -11,7 +11,7 @@ function Layout(props) {
   }
   return (
     <div className="relative flex dark:bg-primary bg-layoutBackground">
-      <div className="h-fit max-h-screen min-w-[20%] hidden sm:block z-50 sticky top-0">
+      <div className="h-fit max-h-screen min-w-[15%] hidden sm:block z-50 sticky top-0">
         <Sidebar />
       </div>
       <div className={`flex-1 h-fit flex flex-col`}>
