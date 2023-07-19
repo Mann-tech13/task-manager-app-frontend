@@ -11,17 +11,17 @@ function Layout(props) {
   }
   return (
     <div className="relative flex dark:bg-primary bg-layoutBackground">
-      <div className="h-fit max-h-screen min-w-[15%] hidden xl:block z-50 sticky top-0">
+      <div className="h-fit max-h-screen min-w-[15%] hidden sm:block z-50 sticky top-0">
         <Sidebar />
       </div>
       <div className={`flex-1 h-fit flex flex-col`}>
         <Header toggleHamburger={toggleHamburger} isHamburger={isHamburger} />
         {isHamburger ? (
-          <div className="dark:bg-primary bg-lightPrimary block xl:hidden absolute w-full top-[60px] z-10 h-screen max-h-screen ">
+          <div className="dark:bg-primary bg-lightPrimary block sm:hidden absolute w-full top-[60px] z-10 h-screen max-h-screen ">
             <Sidebar toggleHamburger={toggleHamburger} />
           </div>
         ) : (
-          <div className="w-full overflow-y-scroll no-scrollbar px-4 xl:pr-[65px] xl:pb-[162px] pb-[50px] h-screen mt-[60px] xl:mt-0">
+          <div className="w-full overflow-y-scroll no-scrollbar px-4 sm:pr-[65px] sm:pb-[162px] pb-[50px] h-screen mt-[60px] sm:mt-0">
             <div className="body-container">{props.children}</div>
           </div>
         )}

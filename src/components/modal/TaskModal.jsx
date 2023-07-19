@@ -58,7 +58,7 @@ function TaskModal({ showModal, showDetails, isType, data }) {
     <Modal showModal={showModal}>
       <Formik enableReinitialize={true} onSubmit>
         <Form onSubmit={formik.handleSubmit}>
-          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black dark:bg-secondary bg-lightSecondary focus:outline-none rounded-10 xl:min-w-[600px]">
+          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black dark:bg-secondary bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
             <div className="flex justify-between">
               {isType === "OPEN" ? (
                 <p className="text-20-600 dark:text-textSecondary text-textDark">
@@ -198,7 +198,7 @@ function TaskModal({ showModal, showDetails, isType, data }) {
               </div>
             </div>
             {isType === "OPEN" || isType === "ADD" ? (
-              <div className="flex flex-col justify-between gap-4 mt-4 xl:flex-row">
+              <div className="flex flex-col justify-between gap-4 mt-4 sm:flex-row">
                 <button
                   className={`text-14-600 py-4 px-[30px] flex gap-[5px] ${
                     isType === "OPEN" && showDetails === true

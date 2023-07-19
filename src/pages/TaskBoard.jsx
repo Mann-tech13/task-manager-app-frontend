@@ -12,7 +12,16 @@ function TaskBoard() {
   useEffect(() => {
     async function fetchData() {
       const result = await getAllTasksAPI();
-      setAPIResponseData(result?.data);
+      if(result?.status === 200){
+        const priorityOrder = ["P1", "P2", "P3"];
+        const sortByPriority = (a, b) => {
+          const priorityA = priorityOrder.indexOf(a.priority);
+          const priorityB = priorityOrder.indexOf(b.priority);
+          return priorityA - priorityB;
+        };
+        const sortedData = result?.data?.sort(sortByPriority)
+        setAPIResponseData(sortedData);
+      }
     }
     fetchData();
   }, [addTaskModal, APIResponseData]);
@@ -20,7 +29,7 @@ function TaskBoard() {
   return (
     <>
       <Layout>
-        <div className="grid md:grid-cols-3 grid-rows-3 text-textDark mt-5 ">
+        <div className="flex sm:flex-row flex-col gap-4 justify-between flex-wrap text-textDark mt-5 ">
           <DataDisplay
             isType="OPEN"
             data={APIResponseData}

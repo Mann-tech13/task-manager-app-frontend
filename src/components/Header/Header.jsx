@@ -22,7 +22,7 @@ function Header(props) {
               }}
             >
               <p
-                className={`text-textDark bg-textTertiary w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
+              className={`text-textDark bg-[#635fc7]/[0.75] w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
               >
                 M
               </p>
@@ -41,18 +41,18 @@ function Header(props) {
          
         </div>
         <div
-          className=""
+          className="mx-5 cursor-pointer hidden sm:block heading "
           onClick={() => {
             navigate("/");
           }}
         >
-          <UnbundleLogo />
+          Planify
         </div>
         <div
           className="rounded-lg"
         >
           <p
-            className={`text-textDark  bg-textTertiary w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
+            className={`text-textDark  bg-[#635fc7]/[0.75] w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
           >
             M
           </p>

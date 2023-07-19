@@ -35,7 +35,7 @@ function Modal(props) {
         }`}
       ></div>
       <div
-        className="absolute flex flex-col justify-center xl:w-fit shadow-lg outline-none focus:outline-none w-[calc(100%-32px)]"
+        className="absolute flex flex-col justify-center sm:w-fit shadow-lg outline-none focus:outline-none w-[calc(100%-32px)]"
         onClick={(e) => {
           e.stopPropagation();
         }}

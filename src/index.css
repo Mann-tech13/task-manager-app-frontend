@@ -3,15 +3,14 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Roboto+Mono&family=Syne+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Nunito&family=Roboto+Mono&family=Syne+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Nunito:wght@600&display=swap');
+
+  /* @import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap"); */
 
 :root {
   font-family: "Nunito", sans-serif;
 
   line-height: 1.5;
-  font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -32,7 +31,6 @@
 .body {
   overflow-y: scroll;
   scrollbar-width: none;
-
   font-family: "Nunito", sans-serif;
 }
 
@@ -124,17 +122,12 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.heading {
-  font-family: "Nabla";
-  font-palette: --myPalette;
+.heading {  
   font-size: 44px;
-}
-
-@font-palette-values --myPalette {
-  font-family: "Nabla";
-  base-palette: 6;
-  override-colors: 8 #12188a, 3 #12188a, 1 #12188a, 4 #12188a, 5 #12188a,
-    9 #12188a;
+  background: -webkit-linear-gradient(#514cba, #1a0848);
+  font-weight: bolder;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 input[type="number"] {

@@ -29,8 +29,8 @@ function DataDisplay({ isType, data, addTaskModal }) {
     }
   };
   return (
-    <div className="flex flex-col gap-4 max-w-[300px]">
-      <div className="flex flex-row justify-between items-center">
+    <div className="flex flex-col gap-4 md:w-[350px] w-full">
+      <div className="flex flex-row justify-between items-center md:w-[350px]">
         {isType === "OPEN" ? (
           <>
             <p className="text-18-600">Todo</p>
@@ -56,7 +56,7 @@ function DataDisplay({ isType, data, addTaskModal }) {
                   <>
                     <div
                       key={i}
-                      className={`p-5 rounded-xl flex cursor-pointer flex-col gap-2 shadow-input-shadow bg-lightPrimary ${
+                      className={`p-5 rounded-xl flex cursor-pointer h-[248px] flex-col justify-between shadow-input-shadow bg-lightPrimary ${
                         isType === "OPEN"
                           ? "border-b-theme border-2"
                           : isType === "PROGRESS"
@@ -68,31 +68,35 @@ function DataDisplay({ isType, data, addTaskModal }) {
                       onClick={() => handleDataDetailsClick(obj._id)}
                     >
                       <div className="flex flex-row justify-between">
-                        <div
-                          onClick={(event) =>
-                            handleTaskBackwardStatus(obj?._id, obj, event)
-                          }
-                        >
-                          {isType !== "OPEN" ? (
+                        {isType !== "OPEN" ? (
+                          <div
+                            onClick={(event) =>
+                              handleTaskBackwardStatus(obj?._id, obj, event)
+                            }
+                          >
                             <LeftBackwardSVG fill="#635fc7" />
-                          ) : null}
-                        </div>
+                          </div>
+                        ) : null}
                         <p
                           className={`text-20-600 ${
                             isType === "PROGRESS" ? "text-center" : "text-left"
-                          } overflow-hidden overflow-ellipsis`}
+                          } overflow-hidden max-h-[48px] overflow-ellipsis`}
                         >
                           {obj?.title}
                         </p>
-                        <div
-                          onClick={(event) =>
-                            handleTaskForwardStatus(obj?._id, obj, event)
-                          }
-                        >
-                          {isType !== "RESOLVED" ? (
+                        {isType !== "RESOLVED" ? (
+                          <div
+                            onClick={(event) =>
+                              handleTaskForwardStatus(obj?._id, obj, event)
+                            }
+                          >
                             <RightForwardSVG fill="#635fc7" />
-                          ) : null}
-                        </div>
+                          </div>
+                        ) : null}
+                      </div>
+
+                      <div className="my-4">
+                        <p className="overflow-hidden  max-h-[98px] overflow-ellipsis">{obj?.description}</p>
                       </div>
 
                       <div className="flex flex-row justify-between items-center">
@@ -100,7 +104,7 @@ function DataDisplay({ isType, data, addTaskModal }) {
                           {" "}
                           {obj?.projectName}
                         </p>
-                        <p className="text-Penta text-15-500 ">
+                        <p className={`text-textDark text-15-500 p-1 rounded-full ${isType === "OPEN" ? "bg-theme" : isType === "PROGRESS" ? "bg-progressTheme" : isType === "RESOLVED" ? "bg-resolvedTheme" : ""}`}>
                           {obj?.priority}
                         </p>
                       </div>
