@@ -20,7 +20,7 @@ function TaskBoard() {
   return (
     <>
       <Layout>
-        <div className="grid grid-cols-3 text-textDark mt-5 ">
+        <div className="grid md:grid-cols-3 grid-rows-3 text-textDark mt-5 ">
           <DataDisplay
             isType="OPEN"
             data={APIResponseData}
@@ -30,7 +30,7 @@ function TaskBoard() {
           <DataDisplay isType="RESOLVED" data={APIResponseData} />
         </div>
       </Layout>
-      {addTaskModal && <TaskModal showModal={setAddTaskModal} />}
+      {addTaskModal && <TaskModal showModal={setAddTaskModal} isType="ADD"/>}
     </>
   );
 }

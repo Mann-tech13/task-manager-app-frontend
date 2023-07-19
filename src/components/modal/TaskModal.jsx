@@ -1,49 +1,85 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "./Modal";
 import { Form, Formik, useFormik } from "formik";
 import * as yup from "yup";
 import { CrossIcon } from "../../assets/icons/icons";
 import dropDownIcon from "../../assets/angle-down.svg";
-import { addNewTaskAPI } from "../../apis/TaskPlaning/TaskAPI";
+import { addNewTaskAPI, deleteTaskAPI, updateTasksAPI } from "../../apis/TaskPlaning/TaskAPI";
 
 const validationSchema = yup.object({
   title: yup.string().required("Title is required"),
   projectName: yup.string().required("Project Name is required"),
   priority: yup.string().required("Priority is required"),
+  description: yup.string().required("Description is required"),
+
 });
 
-function TaskModal({showModal}) {
+function TaskModal({ showModal, showDetails, isType, data }) {
   const priority = [
     { label: "P1", value: "P1" },
     { label: "P2", value: "P2" },
     { label: "P3", value: "P3" },
   ];
 
+  useEffect(() => {
+    if (showDetails) {
+      // console.log(data);
+      formik.setFieldValue("title", data?.title);
+      formik.setFieldValue("projectName", data?.projectName);
+      formik.setFieldValue("priority", data?.priority);
+      formik.setFieldValue("description", data?.description);
+
+    }
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       title: "",
       projectName: "",
       priority: "",
+      description: "",
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      await addNewTaskAPI(values)
-      showModal(false)
+      if(isType === "ADD") {
+        await addNewTaskAPI(values);
+      }else if(isType === "OPEN") {
+        await updateTasksAPI(data._id, values)
+      }
+      showModal(false);
+
     },
   });
+  const handleCloseClick = async () => {
+    await deleteTaskAPI(data._id);
+    showModal(false);
+  }
   return (
     <Modal showModal={showModal}>
       <Formik enableReinitialize={true} onSubmit>
         <Form onSubmit={formik.handleSubmit}>
-          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black dark:bg-secondary bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
+          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black dark:bg-secondary bg-lightSecondary focus:outline-none rounded-10 xl:min-w-[600px]">
             <div className="flex justify-between">
-              <p className="text-20-600 dark:text-textSecondary text-textDark">
-                Add New Task
-              </p>
-              <div
-                className="cursor-pointer"
-                onClick={() => showModal(false)}
-              >
+              {isType === "OPEN" ? (
+                <p className="text-20-600 dark:text-textSecondary text-textDark">
+                  Edit Your Task
+                </p>
+              ) : isType === "ADD" ? (
+                <p className="text-20-600 dark:text-textSecondary text-textDark">
+                  Add New Task
+                </p>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  <p className="text-20-600 dark:text-textSecondary text-textDark">
+                    See Your Task
+                  </p>
+                  <p className="text-13-400 dark:text-textSecondary text-dangerTheme select-none  ">
+                    Can only edit your task in when it is OPEN*
+                  </p>
+                </div>
+              )}
+
+              <div className="cursor-pointer" onClick={() => showModal(false)}>
                 <CrossIcon />
               </div>
             </div>
@@ -60,6 +96,11 @@ function TaskModal({showModal}) {
                   value={formik.values.title}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  disabled={
+                    isType === "PROGRESS" || isType === "RESOLVED"
+                      ? true
+                      : false
+                  }
                 />
               </div>
               {formik.errors.title && formik.touched.title ? (
@@ -68,6 +109,34 @@ function TaskModal({showModal}) {
                 </p>
               ) : null}
             </div>
+
+            <div className="flex flex-col gap-[10px]">
+              <label className="dark:text-textQuad text-textGreyLight text-12-500">
+                Write project description
+              </label>
+              <div className="relative dark:text-textSecondary text-textDark">
+                <textarea
+                  type="text"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 dark:bg-primary bg-lightPrimary"
+                  name="description"
+                  placeholder="Build UI for onboarding flow"
+                  value={formik.values.description}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  disabled={
+                    isType === "PROGRESS" || isType === "RESOLVED"
+                      ? true
+                      : false
+                  }
+                />
+              </div>
+              {formik.errors.description && formik.touched.description ? (
+                <p className="text-red-600 text-12-500 ">
+                  {formik.errors.description}
+                </p>
+              ) : null}
+            </div>
+
             <div className="flex flex-col gap-[10px]">
               <label className="dark:text-textQuad text-textGreyLight text-12-500">
                 Write your project name
@@ -81,6 +150,11 @@ function TaskModal({showModal}) {
                   value={formik.values.projectName}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  disabled={
+                    isType === "PROGRESS" || isType === "RESOLVED"
+                      ? true
+                      : false
+                  }
                 />
               </div>
               {formik.errors.projectName && formik.touched.projectName ? (
@@ -99,6 +173,11 @@ function TaskModal({showModal}) {
                     value={formik.values.priority}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    disabled={
+                      isType === "PROGRESS" || isType === "RESOLVED"
+                        ? true
+                        : false
+                    }
                   >
                     <option value="">Select a option</option>
                     {priority.map((option) => (
@@ -111,29 +190,43 @@ function TaskModal({showModal}) {
                     <img src={dropDownIcon} alt="drop-down" />
                   </div>
                 </div>
-                {formik.errors.priority &&
-                formik.touched.priority ? (
+                {formik.errors.priority && formik.touched.priority ? (
                   <p className="text-red-600 text-12-500 ">
                     {formik.errors.priority}
                   </p>
                 ) : null}
               </div>
             </div>
-            <div className="flex flex-col justify-between gap-4 mt-4 sm:flex-row">
-              <button
-                className="text-14-600 py-4 px-[30px] flex gap-[5px] dark:bg-tertiary hover:bg-lightGreyHover bg-lightGrey rounded-10 dark:text-textSecondary text-textDark justify-center items-center min-w-[203px]"
-                onClick={() => showModal(false)}
-                type="button"
-              >
-                <p>Cancel</p>
-              </button>
-              <button
-                className={`text-14-600 py-4 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 dark:text-primary text-lightPrimary justify-center items-center min-w-[203px]`}
-                type="submit"
-              >
-                <p>Add</p>
-              </button>
-            </div>
+            {isType === "OPEN" || isType === "ADD" ? (
+              <div className="flex flex-col justify-between gap-4 mt-4 xl:flex-row">
+                <button
+                  className={`text-14-600 py-4 px-[30px] flex gap-[5px] ${
+                    isType === "OPEN" && showDetails === true
+                      ? "bg-dangerTheme text-textPrimary"
+                      : "dark:bg-tertiary hover:bg-lightGreyHover bg-lightGrey dark:text-textSecondary text-textDark"
+                  } rounded-10  justify-center items-center min-w-[203px]`}
+                  onClick={() => handleCloseClick()}
+                  type="button"
+                >
+                  {isType === "OPEN" && showDetails === true ? (
+                    <p>Delete</p>
+                  ) : (
+                    <p>Cancel</p>
+                  )}
+                </button>
+
+                <button
+                  className={`text-14-600 py-4 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 dark:text-primary text-lightPrimary justify-center items-center min-w-[203px]`}
+                  type="submit"
+                >
+                  {isType === "OPEN" && showDetails === true ? (
+                    <p>Update</p>
+                  ) : (
+                    <p>Add</p>
+                  )}
+                </button>
+              </div>
+            ) : null}
           </div>
         </Form>
       </Formik>

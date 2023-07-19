@@ -9,6 +9,15 @@ export const getAllTasksAPI = async () => {
   }
 };
 
+export const getTaskAPI = async (id) => {
+  try {
+    const response = await axios.get(process.env.REACT_APP_API + `t/getTask/${id}`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const addNewTaskAPI = async (values) => {
   try {
     const response = await axios.post(process.env.REACT_APP_API + `t/addTasks`, values);

@@ -28,9 +28,9 @@ function Sidebar(props) {
   const isMobile = width <= 768;
 
   return (
-    <div className="dark:bg-primary bg-lightPrimary h-screen sm:pt-[23px] pt-[13px] flex flex-col gap-8  pl-[20px] pr-[15px]  sm:pl-6 sm:pr-3 ">
+    <div className="dark:bg-primary bg-lightPrimary h-screen xl:pt-[23px] pt-[13px] flex flex-col gap-8  pl-[20px] pr-[15px]  xl:pl-6 xl:pr-3 ">
       <div
-        className="mx-5 mb-[30px] cursor-pointer hidden sm:block heading text-textDark"
+        className="mx-5 mb-[30px] cursor-pointer hidden xl:block heading text-textDark"
         onClick={() => {
           navigate("/");
         }}

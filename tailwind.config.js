@@ -31,6 +31,9 @@ module.exports = {
         // theme
         theme: "#635fc7",
         themeHover: "#514cba",
+        dangerTheme: "#d11d17",
+        progressTheme: "#fce303",
+        resolvedTheme: "#2cfc03",
         
         lightGrey: "#EFEFEF",
         lightGreyHover: "#ededed"
