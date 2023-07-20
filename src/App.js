@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/manage" element={<TaskBoard/>}/>
+        <Route exact path="/" element={<TaskBoard/>}/>
       </Routes>
     </Router>
     
