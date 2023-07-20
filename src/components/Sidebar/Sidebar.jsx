@@ -46,9 +46,13 @@ function Sidebar(props) {
           return (
             <li key={i} className="cursor-pointer">
               <Link to={sidebarOptions.route}>
+                {console.log(activeHeader)}
                 <div
                   className={`text-18-600 flex gap-2 items-center px-[15px] py-3 rounded-lg ${
-                    activeHeader && sidebarOptions.route.includes(activeHeader)
+                    activeHeader === "" && sidebarOptions.route.includes("/")
+                      ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-theme"
+                      : activeHeader &&
+                        sidebarOptions.route.includes(activeHeader)
                       ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-theme"
                       : "dark:text-textQuad text-textGreyLight"
                   }`}
@@ -59,8 +63,10 @@ function Sidebar(props) {
                   <SidebarIcon
                     option={sidebarOptions.option}
                     fill={
-                      activeHeader &&
-                      sidebarOptions.route.includes(activeHeader)
+                      activeHeader === "" && sidebarOptions.route.includes("/")
+                        ? "#ffffff"
+                        : activeHeader &&
+                          sidebarOptions.route.includes(activeHeader)
                         ? "#ffffff"
                         : "#000000"
                     }
