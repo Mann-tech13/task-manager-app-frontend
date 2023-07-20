@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
+import Header from "../components/header/Header";
 
 function Layout(props) {
   const [isHamburger, setHamburger] = useState(false);
