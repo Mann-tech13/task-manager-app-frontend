@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import Header from "../header/Header";
-import Sidebar from "../sideBar/Sidebar";
+import Header from "../components/header/Header";
+import Sidebar from "../components/sidebar/Sidebar";
 
 function Layout(props) {
   const [isHamburger, setHamburger] = useState(false);
@@ -11,8 +11,9 @@ function Layout(props) {
   }
   return (
     <div className="relative flex dark:bg-primary bg-layoutBackground">
+      
       <div className="h-fit max-h-screen min-w-[15%] hidden sm:block z-50 sticky top-0">
-        <Sidebar />
+        <Sidebar/>
       </div>
       <div className={`flex-1 h-fit flex flex-col`}>
         <Header toggleHamburger={toggleHamburger} isHamburger={isHamburger} />

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import SettingsSidebar from "../sideBar/SettingsSidebar";
 import DeleteModal from "../../components/modal/DeleteModal";
-import Header from "../header/Header";
+import Header from "../components/header/Header";
 
 function SettingsLayout(props) {
   const [isHamburger, setHamburger] = useState(false);

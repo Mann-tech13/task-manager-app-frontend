@@ -2,7 +2,6 @@
 import {
   Cross,
   Hamburger,
-  UnbundleLogo,
 } from "../../assets/icons/icons";
 import { useNavigate } from "react-router-dom";
 

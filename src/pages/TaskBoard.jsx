@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../components/layout/Layout";
+import Layout from "../layout/Layout";
 import TaskModal from "../components/modal/TaskModal";
 import DataDisplay from "../components/data/DataDisplay";
 import { useEffect } from "react";
