@@ -11,6 +11,7 @@ function TaskBoard() {
 
   useEffect(() => {
     async function fetchData() {
+      let apiData = []
       const result = await getAllTasksAPI();
       if(result?.status === 200){
         const priorityOrder = ["P1", "P2", "P3"];
@@ -19,7 +20,8 @@ function TaskBoard() {
           const priorityB = priorityOrder.indexOf(b.priority);
           return priorityA - priorityB;
         };
-        const sortedData = result?.data?.sort(sortByPriority)
+        apiData = result?.data
+        const sortedData = apiData.sort(sortByPriority)
         setAPIResponseData(sortedData);
       }
     }
