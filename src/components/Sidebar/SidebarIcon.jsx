@@ -16,6 +16,10 @@ function SidebarIcon(props) {
       option: "Manage",
       icon: <ManageSVG fill={props.fill} />,
     },
+    {
+      option: "Calendar",
+      icon: <ManageSVG fill={props.fill} />
+    }
     // {
     //   option: "Applications",
     //   icon: <TalentLogo fill={props.fill} />,
