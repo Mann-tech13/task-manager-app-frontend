@@ -2,22 +2,22 @@
 import { useEffect } from "react";
 
 function Modal(props) {
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        props.showModal(false);
-        if (props.setActionButtonToggle) {
-          props.setActionButtonToggle(false);
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const handleKeyDown = (event) => {
+  //     if (event.key === "Escape") {
+  //       props.showModal(false);
+  //       if (props.setActionButtonToggle) {
+  //         props.setActionButtonToggle(false);
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener("keydown", handleKeyDown);
+  //   window.addEventListener("keydown", handleKeyDown);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, []);
 
   return (
     <div

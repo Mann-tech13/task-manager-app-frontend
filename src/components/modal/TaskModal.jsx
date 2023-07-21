@@ -30,7 +30,7 @@ function TaskModal({ showModal, showDetails, isType, data }) {
       formik.setFieldValue("description", data?.description);
 
     }
-  }, []);
+  },);
 
   const formik = useFormik({
     initialValues: {
