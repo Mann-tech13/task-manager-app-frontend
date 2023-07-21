@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from "react";
-
 function Modal(props) {
   // useEffect(() => {
   //   const handleKeyDown = (event) => {
