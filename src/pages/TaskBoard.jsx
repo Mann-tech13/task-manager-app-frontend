@@ -31,7 +31,7 @@ function TaskBoard() {
   return (
     <>
       <Layout>
-        <div className="flex sm:flex-row flex-col gap-4 justify-between flex-wrap text-textDark mt-5 ">
+        <div className="flex sm:flex-row flex-col gap-4 xl:justify-between sm:justify-start flex-wrap text-textDark xl:mt-5 sm:mt-28 mt-5">
           <DataDisplay
             isType="OPEN"
             data={APIResponseData}

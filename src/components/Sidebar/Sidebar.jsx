@@ -10,7 +10,11 @@ function Sidebar(props) {
   const [activeHeader, setActiveHeader] = useState("");
 
   useEffect(() => {
-    setActiveHeader(window.location.pathname.split("/")[1]);
+    if (window.location.pathname.split("/")[1] === "") {
+      setActiveHeader("/");
+    } else {
+      setActiveHeader(window.location.pathname.split("/")[1]);
+    }
   }, []);
   useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
@@ -30,7 +34,7 @@ function Sidebar(props) {
   return (
     <div className="dark:bg-primary bg-lightPrimary h-screen sm:pt-[23px] pt-[13px] flex flex-col gap-8  pl-[20px] pr-[15px]  sm:pl-6 sm:pr-3 ">
       <div
-        className="mx-5 cursor-pointer text-center hidden sm:block heading text-textDark"
+        className="mx-5 cursor-pointer text-center hidden xl:block heading text-textDark"
         onClick={() => {
           navigate("/");
         }}
@@ -46,13 +50,9 @@ function Sidebar(props) {
           return (
             <li key={i} className="cursor-pointer">
               <Link to={sidebarOptions.route}>
-                {console.log(activeHeader)}
                 <div
                   className={`text-18-600 flex gap-2 items-center px-[15px] py-3 rounded-lg ${
-                    activeHeader === "" && sidebarOptions.route.includes("/")
-                      ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-theme"
-                      : activeHeader &&
-                        sidebarOptions.route.includes(activeHeader)
+                    activeHeader && sidebarOptions.route === activeHeader
                       ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-theme"
                       : "dark:text-textQuad text-textGreyLight"
                   }`}
@@ -63,10 +63,8 @@ function Sidebar(props) {
                   <SidebarIcon
                     option={sidebarOptions.option}
                     fill={
-                      activeHeader === "" && sidebarOptions.route.includes("/")
-                        ? "#ffffff"
-                        : activeHeader &&
-                          sidebarOptions.route.includes(activeHeader)
+                      activeHeader &&
+                      sidebarOptions.route === activeHeader
                         ? "#ffffff"
                         : "#000000"
                     }
