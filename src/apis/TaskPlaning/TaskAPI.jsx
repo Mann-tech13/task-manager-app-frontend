@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const getAllTasksAPI = async () => {
+  console.log(process.env.REACT_APP_API);
   try {
     const response = await axios.get(process.env.REACT_APP_API + `t/getTasks`);
     return response;
