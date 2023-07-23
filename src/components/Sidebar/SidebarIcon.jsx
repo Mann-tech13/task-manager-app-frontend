@@ -1,14 +1,6 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable react/prop-types */
-import {
-  // CompanyIcon,
-  // Dashboard,
-  // GrantIcon,
-  ManageSVG,
-  // Microphone,
-  // MoneyBag,
-  // TalentLogo,
-} from "../../assets/icons/icons";
+import { ManageSVG, CalendarSVG } from "../../assets/icons/icons";
 
 function SidebarIcon(props) {
   const SidebarMenuOptions = [
@@ -18,28 +10,8 @@ function SidebarIcon(props) {
     },
     {
       option: "Calendar",
-      icon: <ManageSVG fill={props.fill} />
-    }
-    // {
-    //   option: "Applications",
-    //   icon: <TalentLogo fill={props.fill} />,
-    // },
-    // {
-    //   option: "Investors",
-    //   icon: <MoneyBag fill={props.fill} />,
-    // },
-    // {
-    //   option: "Startups",
-    //   icon: <CompanyIcon fill={props.fill} />,
-    // },
-    // {
-    //   option: "Events",
-    //   icon: <Microphone fill={props.fill} />,
-    // },
-    // {
-    //   option: "Grants",
-    //   icon: <GrantIcon fill={props.fill} />,
-    // },
+      icon: <CalendarSVG fill={props.fill} />,
+    },
   ];
 
   const filteredOptions = SidebarMenuOptions.filter((ele) => {

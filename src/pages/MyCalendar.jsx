@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Layout from "../layout/Layout";
 import CalendarEventModal from "../components/modal/CalendarEventModal";
+import { getAllEventsAPI } from "../apis/EventsPlanning/EventAPI";
 
 function MyCalendar() {
   const localizer = momentLocalizer(moment);
@@ -16,34 +17,39 @@ function MyCalendar() {
     description: "",
   });
 
+  useEffect(() => {
+    async function fetchEvents(){
+      const result = await getAllEventsAPI();
+      if(result?.status === 200){
+        let apiData = result?.data.map((event) => ({
+          ...event,
+          start: new Date(event?.start*1000),
+          end: new Date(event?.end * 1000),
+          createdAt: new Date(event?.createdAt * 1000),
+
+        }));
+        setEvents(apiData)
+      }
+    }
+    fetchEvents();
+  }, [calendarModal])
+  
+
   const handleSelect = ({ start, end }) => {
-    // Open the modal to schedule a task when the user selects a time slot
-    // The "start" and "end" parameters contain the selected time range
-    // You can use them to set the initial values of the scheduling form
     setFormData({ start, end, title: "", description: ""})
     setCalendarModal(true);
   };
 
-  // const handleEventResize = (event) => {
-  //   // Handle event resizing (if required)
-  // };
-
-  // const handleEventDrop = ({ event, start, end }) => {
-  //   // Handle event dragging (if required)
-  // };
-
   return (
     <>
       <Layout>
-        <div className="mt-4">
+        <div className="xl:mt-4 sm:mt-24 mt-4">
         <Calendar
           localizer={localizer}
           events={events}
           startAccessor="start"
           endAccessor="end"
           onSelectSlot={handleSelect}
-          // onEventResize={handleEventResize}
-          // onEventDrop={handleEventDrop}
           selectable
           style={{ height: 500, color: "black" }}
         /></div>

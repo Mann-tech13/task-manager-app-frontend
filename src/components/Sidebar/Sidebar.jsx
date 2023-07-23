@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { SidebarMenuOptions } from "./SidebarMenu";
 import { Link, useNavigate } from "react-router-dom";
 import SidebarIcon from "./SidebarIcon";
-// import planify from "../../assets/Planify.svg"
 
 function Sidebar(props) {
   const navigate = useNavigate();
@@ -51,10 +50,10 @@ function Sidebar(props) {
             <li key={i} className="cursor-pointer">
               <Link to={sidebarOptions.route}>
                 <div
-                  className={`text-18-600 flex gap-2 items-center px-[15px] py-3 rounded-lg ${
+                  className={`text-18-600 flex gap-6 items-center px-[15px] py-3 rounded-lg ${
                     activeHeader && sidebarOptions.route === activeHeader
                       ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-theme"
-                      : "dark:text-textQuad text-textGreyLight"
+                      : "dark:text-textQuad text-textDark"
                   }`}
                   onClick={() => {
                     isMobile && props.toggleHamburger();

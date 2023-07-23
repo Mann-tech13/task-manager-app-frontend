@@ -3,6 +3,8 @@ import Modal from "./Modal";
 import { Form, Formik, useFormik } from "formik";
 import * as yup from "yup";
 import { CrossIcon } from "../../assets/icons/icons";
+import { addNewEventAPI } from "../../apis/EventsPlanning/EventAPI";
+import moment from "moment";
 
 const validationSchema = yup.object({
   title: yup.string().required("Task is required"),
@@ -18,11 +20,13 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
         const newEvent = {
-            start: formData.start,
-            end: formData.end,
+            start: moment(formData.start, 'ddd MMM D YYYY HH:mm:ss ZZ').valueOf()/1000,
+            end: moment(formData.end, 'ddd MMM D YYYY HH:mm:ss ZZ').valueOf()/1000,
             title: values.title,
-            description: values.description
+            description: values.description,
+            createdAt: moment().valueOf()/1000,
         }
+        await addNewEventAPI(newEvent);
         setEvents((prevEvents) => [...prevEvents, newEvent])
         showModal(false)
     },
