@@ -9,8 +9,6 @@
   line-height: 1.5;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #1b1b1b;
   --scrollBarColorDark: #434343;
   --scrollBarColorLight: #ebebeb;
 
@@ -144,4 +142,13 @@ input[type="number"] {
   100% {
     opacity: 1;
   }
+}
+
+.secure-wrapper {
+  background: url("./assets/violet-watercolor-texture-background.jpg");
+}
+
+.backdrop-container {
+  backdrop-filter: blur( 4.5px );
+-webkit-backdrop-filter: blur( 4.5px );
 }
