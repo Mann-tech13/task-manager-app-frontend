@@ -5,17 +5,11 @@ module.exports = {
     extend: {
       visibility: ["group-hover"],
       colors: {
-        primary: "#1B1B1B",
-        secondary: "#272727",
-        tertiary: "#2E2E2E",
         quad: "#434343",
-        textPrimary: "#ffffff",
-        textSecondary: "#D2D2D2",
-        textQuad: "#9B9B9B",
         textDark: "#111111",
         
         // light theme
-        lightPrimary: "#ffffff",
+        primary: "#ffffff",
         lightSecondary: "#F8F8F8",
         
         // latest
@@ -29,7 +23,9 @@ module.exports = {
         resolvedTheme: "#2cfc03",
         
         lightGrey: "#EFEFEF",
-        lightGreyHover: "#ededed"
+        lightGreyHover: "#ededed",
+
+        linkLine: "#286df7"
 
       },
     },

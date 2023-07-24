@@ -13,14 +13,14 @@
 //   }
 
 //   return (
-//     <div className="relative flex dark:bg-primary bg-lightPrimary">
+//     <div className="relative flex  bg-primary">
 //       <div className="w-[19%] hidden sm:block max-h-screen sticky top-0 h-fit pl-[20px] pr-[15px] pt-[13px] sm:pl-[37px] sm:pr-[11px] sm:pt-[23px]">
 //         <SettingsSidebar showModal={setLogoutModal} />
 //       </div>
 //       <div className="sm:w-[81%] h-fit flex flex-col w-full">
 //         <Header toggleHamburger={toggleHamburger} isHamburger={isHamburger} />
 //         {isHamburger ? (
-//           <div className="dark:bg-primary bg-lightPrimary h-screen block sm:hidden absolute w-full top-[60px] z-10 max-h-screen pl-[20px] pr-[15px] pt-[13px] sm:pl-[37px] sm:pr-[11px] sm:pt-[23px]">
+//           <div className=" bg-primary h-screen block sm:hidden absolute w-full top-[60px] z-10 max-h-screen pl-[20px] pr-[15px] pt-[13px] sm:pl-[37px] sm:pr-[11px] sm:pt-[23px]">
 //             <SettingsSidebar toggleHamburger={toggleHamburger} />
 //           </div>
 //         ) : (

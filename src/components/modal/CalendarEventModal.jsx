@@ -35,9 +35,9 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
     <Modal showModal={showModal}>
       <Formik enableReinitialize={true} onSubmit>
         <Form onSubmit={formik.handleSubmit}>
-          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black dark:bg-secondary bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
+          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black  bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
             <div className="flex justify-between">
-              <p className="text-20-600 dark:text-textSecondary text-textDark">
+              <p className="text-20-600  text-textDark">
                 Schedule your Task
               </p>
               <div className="cursor-pointer" onClick={() => showModal(false)}>
@@ -46,13 +46,13 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
             </div>
 
             <div className="flex flex-col gap-[10px]">
-              <label className="dark:text-textQuad text-textGreyLight text-12-500">
+              <label className=" text-textGreyLight text-12-500">
                 Write your Task
               </label>
-              <div className="relative dark:text-textSecondary text-textDark">
+              <div className="relative  text-textDark">
                 <input
                   type="text"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 dark:bg-primary bg-lightPrimary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10  bg-primary"
                   name="title"
                   placeholder="Meditation"
                   value={formik.values.title}
@@ -68,13 +68,13 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
             </div>
 
             <div className="flex flex-col gap-[10px]">
-              <label className="dark:text-textQuad text-textGreyLight text-12-500">
+              <label className=" text-textGreyLight text-12-500">
                 Write project description
               </label>
-              <div className="relative dark:text-textSecondary text-textDark">
+              <div className="relative  text-textDark">
                 <textarea
                   type="text"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 dark:bg-primary bg-lightPrimary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10  bg-primary"
                   name="description"
                   placeholder="Build UI for onboarding flow"
                   value={formik.values.description}
@@ -91,14 +91,14 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
 
             <div className="flex flex-col justify-between gap-4 mt-4 sm:flex-row">
               <button
-                className={`text-14-600 py-4 px-[30px] flex gap-[5px] dark:bg-tertiary hover:bg-lightGreyHover bg-lightGrey dark:text-textSecondary text-textDark rounded-10  justify-center items-center min-w-[203px]`}
+                className={`text-14-600 py-4 px-[30px] flex gap-[5px]  hover:bg-lightGreyHover bg-lightGrey  text-textDark rounded-10  justify-center items-center min-w-[203px]`}
                 type="button"
               >
                 <p>Cancel</p>
               </button>
 
               <button
-                className={`text-14-600 py-4 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 dark:text-primary text-lightPrimary justify-center items-center min-w-[203px]`}
+                className={`text-14-600 py-4 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 text-primary justify-center items-center min-w-[203px]`}
                 type="submit"
               >
                 <p>Schedule</p>

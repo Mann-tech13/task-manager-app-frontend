@@ -51,29 +51,31 @@ function TaskModal({ showModal, showDetails, isType, data }) {
     },
   });
   const handleCloseClick = async () => {
-    await deleteTaskAPI(data._id);
+    if(data){
+      await deleteTaskAPI(data._id);
+    }
     showModal(false);
   }
   return (
     <Modal showModal={showModal}>
       <Formik enableReinitialize={true} onSubmit>
         <Form onSubmit={formik.handleSubmit}>
-          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black dark:bg-secondary bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
+          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black  bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
             <div className="flex justify-between">
               {isType === "OPEN" ? (
-                <p className="text-20-600 dark:text-textSecondary text-textDark">
+                <p className="text-20-600  text-textDark">
                   Edit Your Task
                 </p>
               ) : isType === "ADD" ? (
-                <p className="text-20-600 dark:text-textSecondary text-textDark">
+                <p className="text-20-600  text-textDark">
                   Add New Task
                 </p>
               ) : (
                 <div className="flex flex-col gap-3">
-                  <p className="text-20-600 dark:text-textSecondary text-textDark">
+                  <p className="text-20-600  text-textDark">
                     See Your Task
                   </p>
-                  <p className="text-13-400 dark:text-textSecondary text-dangerTheme select-none  ">
+                  <p className="text-13-400  text-dangerTheme select-none  ">
                     Can only edit your task in when it is OPEN*
                   </p>
                 </div>
@@ -84,13 +86,13 @@ function TaskModal({ showModal, showDetails, isType, data }) {
               </div>
             </div>
             <div className="flex flex-col gap-[10px]">
-              <label className="dark:text-textQuad text-textGreyLight text-12-500">
+              <label className=" text-textDark text-12-500">
                 Write your Task
               </label>
-              <div className="relative dark:text-textSecondary text-textDark">
+              <div className="relative  text-textDark">
                 <input
                   type="text"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 dark:bg-primary bg-lightPrimary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10  bg-primary"
                   name="title"
                   placeholder="Build UI for onboarding flow"
                   value={formik.values.title}
@@ -111,13 +113,13 @@ function TaskModal({ showModal, showDetails, isType, data }) {
             </div>
 
             <div className="flex flex-col gap-[10px]">
-              <label className="dark:text-textQuad text-textGreyLight text-12-500">
+              <label className=" text-textDark text-12-500">
                 Write project description
               </label>
-              <div className="relative dark:text-textSecondary text-textDark">
+              <div className="relative  text-textDark">
                 <textarea
                   type="text"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 dark:bg-primary bg-lightPrimary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10  bg-primary"
                   name="description"
                   placeholder="Build UI for onboarding flow"
                   value={formik.values.description}
@@ -138,13 +140,13 @@ function TaskModal({ showModal, showDetails, isType, data }) {
             </div>
 
             <div className="flex flex-col gap-[10px]">
-              <label className="dark:text-textQuad text-textGreyLight text-12-500">
+              <label className=" text-textDark text-12-500">
                 Write your project name
               </label>
-              <div className="relative dark:text-textSecondary text-textDark">
+              <div className="relative  text-textDark">
                 <input
                   type="text"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 dark:bg-primary bg-lightPrimary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10  bg-primary"
                   name="projectName"
                   placeholder="WorkOS"
                   value={formik.values.projectName}
@@ -163,12 +165,12 @@ function TaskModal({ showModal, showDetails, isType, data }) {
                 </p>
               ) : null}
               <div className="flex flex-col gap-[10px]">
-                <label className="dark:text-textQuad text-textGreyLight text-12-500">
+                <label className=" text-textDark text-12-500">
                   Set your priority
                 </label>
-                <div className="relative dark:text-textSecondary text-textDark">
+                <div className="relative  text-textDark">
                   <select
-                    className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 dark:bg-primary bg-lightPrimary"
+                    className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10  bg-primary"
                     name="priority"
                     value={formik.values.priority}
                     onChange={formik.handleChange}
@@ -202,8 +204,8 @@ function TaskModal({ showModal, showDetails, isType, data }) {
                 <button
                   className={`text-14-600 py-4 px-[30px] flex gap-[5px] ${
                     isType === "OPEN" && showDetails === true
-                      ? "bg-dangerTheme text-textPrimary"
-                      : "dark:bg-tertiary hover:bg-lightGreyHover bg-lightGrey dark:text-textSecondary text-textDark"
+                      ? "bg-dangerTheme text-primary"
+                      : " hover:bg-lightGreyHover bg-lightGrey  text-textDark"
                   } rounded-10  justify-center items-center min-w-[203px]`}
                   onClick={() => handleCloseClick()}
                   type="button"
@@ -216,7 +218,7 @@ function TaskModal({ showModal, showDetails, isType, data }) {
                 </button>
 
                 <button
-                  className={`text-14-600 py-4 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 dark:text-primary text-lightPrimary justify-center items-center min-w-[203px]`}
+                  className={`text-14-600 py-4 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 text-primary justify-center items-center min-w-[203px]`}
                   type="submit"
                 >
                   {isType === "OPEN" && showDetails === true ? (
