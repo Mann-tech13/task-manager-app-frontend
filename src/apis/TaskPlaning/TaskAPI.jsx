@@ -44,3 +44,13 @@ export const deleteTaskAPI = async (id) => {
     return error;
   }
 };
+
+export const deleteResolvedTasksAPI = async () => {
+  try {
+    const response = await axios.delete(process.env.REACT_APP_API + `t/delete/resolved`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+

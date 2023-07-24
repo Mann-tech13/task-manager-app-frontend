@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LeftBackwardSVG, RightForwardSVG } from "../../assets/icons/icons";
-import { getTaskAPI, updateTasksAPI } from "../../apis/TaskPlaning/TaskAPI";
+import { deleteResolvedTasksAPI, getTaskAPI, updateTasksAPI } from "../../apis/TaskPlaning/TaskAPI";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import TaskModal from "../modal/TaskModal";
@@ -24,10 +24,13 @@ function DataDisplay({ isType, data, addTaskModal }) {
   const handleDataDetailsClick = async (id) => {
     const result = await getTaskAPI(id);
     if (result.status === 200) {
-      setDetails(result.data);
+      setDetails(result?.data);
       setDetailsModal(true);
     }
   };
+  const clearResolvedTask = async () => {
+    await deleteResolvedTasksAPI();
+  }
   return (
     <div className="flex flex-col gap-4 md:w-[350px] w-full">
       <div className="flex flex-row justify-between items-center md:w-[350px]">
@@ -35,7 +38,7 @@ function DataDisplay({ isType, data, addTaskModal }) {
           <>
             <p className="text-18-600">Todo</p>
             <p
-              className="grid place-content-center bg-theme text-textPrimary rounded-full px-2 cursor-pointer"
+              className="grid place-content-center bg-theme text-primary rounded-full px-2 cursor-pointer"
               onClick={() => addTaskModal(true)}
             >
               +
@@ -44,7 +47,9 @@ function DataDisplay({ isType, data, addTaskModal }) {
         ) : isType === "PROGRESS" ? (
           <p className="text-18-600">In Progress</p>
         ) : (
+          <>
           <p className="text-18-600">Done</p>
+          <p className="text-linkLine text-12-500 underline cursor-pointer" onClick={clearResolvedTask}>Clear all</p></>
         )}{" "}
       </div>
       <div className="grid grid-cols-1 gap-4">
@@ -56,7 +61,7 @@ function DataDisplay({ isType, data, addTaskModal }) {
                   <>
                     <div
                       key={i}
-                      className={`p-5 rounded-xl flex cursor-pointer h-[248px] flex-col justify-between shadow-input-shadow bg-lightPrimary ${
+                      className={`p-5 rounded-xl flex cursor-pointer h-[248px] flex-col justify-between shadow-input-shadow bg-primary ${
                         isType === "OPEN"
                           ? "border-b-theme border-2"
                           : isType === "PROGRESS"

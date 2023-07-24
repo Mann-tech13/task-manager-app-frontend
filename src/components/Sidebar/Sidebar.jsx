@@ -3,17 +3,16 @@ import { useEffect, useState } from "react";
 import { SidebarMenuOptions } from "./SidebarMenu";
 import { Link, useNavigate } from "react-router-dom";
 import SidebarIcon from "./SidebarIcon";
-// import planify from "../../assets/Planify.svg"
 
 function Sidebar(props) {
   const navigate = useNavigate();
-  const [activeHeader, setActiveHeader] = useState("");
+  const [activeHeader, setActiveHeader] = useState();
 
   useEffect(() => {
     if (window.location.pathname.split("/")[1] === "") {
-      setActiveHeader("/");
-    } else {
-      setActiveHeader(window.location.pathname.split("/")[1]);
+      setActiveHeader(() => "/manage");
+    } else if(window.location.pathname.split("/")[1] === "calendar") {
+      setActiveHeader(() => "/calendar");
     }
   }, []);
   useEffect(() => {
@@ -32,7 +31,7 @@ function Sidebar(props) {
   const isMobile = width <= 768;
 
   return (
-    <div className="dark:bg-primary bg-lightPrimary h-screen sm:pt-[23px] pt-[13px] flex flex-col gap-8  pl-[20px] pr-[15px]  sm:pl-6 sm:pr-3 ">
+    <div className=" bg-primary h-screen sm:pt-[23px] pt-[13px] flex flex-col gap-8  pl-[20px] pr-[15px]  sm:pl-6 sm:pr-3 ">
       <div
         className="mx-5 cursor-pointer text-center hidden xl:block heading text-textDark"
         onClick={() => {
@@ -49,12 +48,12 @@ function Sidebar(props) {
         {SidebarMenuOptions.map((sidebarOptions, i) => {
           return (
             <li key={i} className="cursor-pointer">
-              <Link to={sidebarOptions.route}>
+              <Link to={sidebarOptions.link}>
                 <div
-                  className={`text-18-600 flex gap-2 items-center px-[15px] py-3 rounded-lg ${
-                    activeHeader && sidebarOptions.route === activeHeader
-                      ? "dark:text-textSecondary text-textPrimary dark:bg-secondary bg-theme"
-                      : "dark:text-textQuad text-textGreyLight"
+                  className={`text-18-600 flex gap-6 items-center px-[15px] py-3 rounded-lg ${
+                    activeHeader && sidebarOptions.route.includes(activeHeader)
+                      ? " text-primary  bg-theme"
+                      : " text-textDark"
                   }`}
                   onClick={() => {
                     isMobile && props.toggleHamburger();
@@ -64,7 +63,7 @@ function Sidebar(props) {
                     option={sidebarOptions.option}
                     fill={
                       activeHeader &&
-                      sidebarOptions.route === activeHeader
+                      sidebarOptions.route.includes(activeHeader)
                         ? "#ffffff"
                         : "#000000"
                     }

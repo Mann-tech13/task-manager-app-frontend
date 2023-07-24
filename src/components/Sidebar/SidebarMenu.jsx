@@ -1,10 +1,12 @@
 export const SidebarMenuOptions = [
   {
     option: "Manage",
-    route: "/",
+    route: "/manage",
+    link: "/"
   },
   {
     option: "Calendar",
-    route: "calendar",
+    route: "/calendar",
+    link: "/calendar"
   }
 ];

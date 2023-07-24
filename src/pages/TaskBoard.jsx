@@ -14,15 +14,15 @@ function TaskBoard() {
       // let apiData = []
       const result = await getAllTasksAPI();
       if(result?.status === 200){
-        // const priorityOrder = ["P1", "P2", "P3"];
-        // const sortByPriority = (a, b) => {
-        //   const priorityA = priorityOrder.indexOf(a.priority);
-        //   const priorityB = priorityOrder.indexOf(b.priority);
-        //   return priorityA - priorityB;
-        // };
-        // apiData = result?.data
-        // const sortedData = apiData.sort(sortByPriority)
-        setAPIResponseData(result?.data);
+        const priorityOrder = ["P1", "P2", "P3"];
+        const sortByPriority = (a, b) => {
+          const priorityA = priorityOrder.indexOf(a.priority);
+          const priorityB = priorityOrder.indexOf(b.priority);
+          return priorityA - priorityB;
+        };
+        let apiData = result?.data
+        const sortedData = apiData.sort(sortByPriority)
+        setAPIResponseData(sortedData);
       }
     }
     fetchData();
