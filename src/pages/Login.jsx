@@ -5,15 +5,12 @@ import { AuthSVG } from "../assets/icons/icons";
 import { Link } from "react-router-dom";
 
 const validationSchema = yup.object({
-  name: yup.string().required("Name is required"),
   email: yup.string().required("Email is required"),
   password: yup.string().required("Password is required"),
 });
-
-function Register() {
+function Login() {
   const formik = useFormik({
     initialValues: {
-      name: "",
       email: "",
       password: "",
     },
@@ -29,33 +26,14 @@ function Register() {
               <AuthSVG />
             </div>
 
-            <div className="w-full mt-8 px-6 flex flex-col gap-4">
-              <div className="flex flex-col gap-2">
-                <p className="text-textGreyLight text-12-500">
-                  Enter your name
-                </p>
-                <input
-                  type="text"
-                  className="block w-full p-3 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
-                  name="name"
-                  placeholder="Smith"
-                  value={formik.values.name}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                {formik.errors.name && formik.touched.name ? (
-                  <p className="text-red-600 text-12-500">
-                    {formik.errors.name}
-                  </p>
-                ) : null}
-              </div>
+            <div className="w-full mt-8 px-6 flex flex-col gap-5">
               <div className="flex flex-col gap-2">
                 <p className="text-textGreyLight text-12-500">
                   Enter your email
                 </p>
                 <input
                   type="email"
-                  className="block w-full p-3 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
                   name="email"
                   placeholder="planify@gmail.com"
                   value={formik.values.email}
@@ -68,12 +46,11 @@ function Register() {
                   </p>
                 ) : null}
               </div>
-
               <div className="flex flex-col gap-2">
                 <p className="text-textGreyLight text-12-500">Enter Password</p>
                 <input
                   type="password"
-                  className="block w-full p-3 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
                   name="password"
                   placeholder="Enter strong password"
                   value={formik.values.password}
@@ -91,10 +68,10 @@ function Register() {
                   className={`text-14-600 py-4 mt-5 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 text-primary justify-center items-center w-full`}
                   type="submit"
                 >
-                  <p>Register</p>
+                  <p>Login</p>
                 </button>
                 <div>
-                  Alredy have an account? <Link to="/login"><span className="text-linkLine underline cursor-pointer">Login here</span>
+                  Don't have an account? <Link to="/register"><span className="text-linkLine underline cursor-pointer">Create here</span>
                 </Link></div>
               </div>
             </div>
@@ -105,4 +82,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;
