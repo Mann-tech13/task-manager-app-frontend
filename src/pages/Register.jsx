@@ -2,7 +2,8 @@ import React from "react";
 import { Form, Formik, useFormik } from "formik";
 import * as yup from "yup";
 import { AuthSVG } from "../assets/icons/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {registerAPI} from "../apis/Auth/AuthAPI";
 
 const validationSchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -11,6 +12,7 @@ const validationSchema = yup.object({
 });
 
 function Register() {
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -18,7 +20,12 @@ function Register() {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      const result = await registerAPI(values);
+      if(result?.status === 200){
+        navigate("/login")
+      }
+    },
   });
   return (
     <div className="secure-wrapper h-screen py-28 px-5">
@@ -29,7 +36,7 @@ function Register() {
               <AuthSVG />
             </div>
 
-            <div className="w-full mt-8 px-6 flex flex-col gap-4">
+            <div className="w-full mt-7 px-6 flex flex-col gap-3">
               <div className="flex flex-col gap-2">
                 <p className="text-textGreyLight text-12-500">
                   Enter your name
@@ -88,7 +95,7 @@ function Register() {
               </div>
               <div className="flex flex-col gap-8 items-center text-15-500">
                 <button
-                  className={`text-14-600 py-4 mt-5 px-[30px] flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 text-primary justify-center items-center w-full`}
+                  className={`text-14-600 py-3 mt-5 px-7 flex gap-[5px] hover:bg-themeHover bg-theme rounded-10 text-primary justify-center items-center w-full`}
                   type="submit"
                 >
                   <p>Register</p>

@@ -2,20 +2,29 @@ import React from "react";
 import { Form, Formik, useFormik } from "formik";
 import * as yup from "yup";
 import { AuthSVG } from "../assets/icons/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {loginAPI} from "../apis/Auth/AuthAPI";
+
 
 const validationSchema = yup.object({
   email: yup.string().required("Email is required"),
   password: yup.string().required("Password is required"),
 });
 function Login() {
+  const navigate = useNavigate()
+
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      const result = await loginAPI(values);
+      if(result?.status === 200){
+        navigate("/")
+      }
+    },
   });
   return (
     <div className="secure-wrapper h-screen py-28 px-5">
