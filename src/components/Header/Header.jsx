@@ -12,9 +12,9 @@ function Header(props) {
           <div className="flex gap-[20px] items-center lg:order-2">
             <div
               className="rounded-lg cursor-pointer"
-              onClick={() => {
-                navigate("/settings");
-              }}
+              // onClick={() => {
+              //   navigate("/settings");
+              // }}
             >
               <p
                 className={`text-textDark bg-[#635fc7]/[0.75] w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}

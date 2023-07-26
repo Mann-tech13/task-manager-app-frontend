@@ -46,7 +46,7 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
             </div>
 
             <div className="flex flex-col gap-[10px]">
-              <label className=" text-textGreyLight text-12-500">
+              <label className=" text-12-500">
                 Write your Task
               </label>
               <div className="relative  text-textDark">
@@ -68,7 +68,7 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
             </div>
 
             <div className="flex flex-col gap-[10px]">
-              <label className=" text-textGreyLight text-12-500">
+              <label className=" text-12-500">
                 Write project description
               </label>
               <div className="relative  text-textDark">
