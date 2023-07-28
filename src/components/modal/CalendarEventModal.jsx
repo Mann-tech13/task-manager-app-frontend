@@ -29,7 +29,7 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
             description: values.description,
             createdAt: moment().valueOf()/1000,
         }
-        await addNewEventAPI(newEvent, accessToken);
+        await addNewEventAPI(accessToken, newEvent);
         setEvents((prevEvents) => [...prevEvents, newEvent])
         showModal(false)
     },

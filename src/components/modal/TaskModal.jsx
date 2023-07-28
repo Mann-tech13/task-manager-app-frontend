@@ -6,6 +6,7 @@ import { CrossIcon } from "../../assets/icons/icons";
 import dropDownIcon from "../../assets/angle-down.svg";
 import { addNewTaskAPI, deleteTaskAPI, updateTasksAPI } from "../../apis/TaskPlaning/TaskAPI";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 const validationSchema = yup.object({
   title: yup.string().required("Title is required"),
@@ -15,7 +16,7 @@ const validationSchema = yup.object({
 
 });
 
-function TaskModal({ showModal, showDetails, isType, data }) {
+function TaskModal({ showModal, showDetails, isType, data, dependency }) {
   const accessToken = useSelector((state) => state.accessToken.token);
 
   const priority = [
@@ -31,9 +32,9 @@ function TaskModal({ showModal, showDetails, isType, data }) {
       formik.setFieldValue("projectName", data?.projectName);
       formik.setFieldValue("priority", data?.priority);
       formik.setFieldValue("description", data?.description);
-
+      formik.setFieldValue("createdAt", data?.createdAt);
     }
-  },);
+  },[accessToken]);
 
   const formik = useFormik({
     initialValues: {
@@ -41,6 +42,7 @@ function TaskModal({ showModal, showDetails, isType, data }) {
       projectName: "",
       priority: "",
       description: "",
+      createdAt: moment().valueOf()/1000,
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
@@ -49,6 +51,7 @@ function TaskModal({ showModal, showDetails, isType, data }) {
       }else if(isType === "OPEN") {
         await updateTasksAPI(data._id, values, accessToken)
       }
+      dependency((val) => !val)
       showModal(false);
 
     },

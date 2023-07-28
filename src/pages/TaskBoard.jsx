@@ -10,6 +10,7 @@ function TaskBoard() {
   const accessToken = useSelector((state) => state.accessToken.token);
   const [addTaskModal, setAddTaskModal] = useState(false);
   const [APIResponseData, setAPIResponseData] = useState([]);
+  const [updateDependency, setUpdateDependency] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -28,7 +29,7 @@ function TaskBoard() {
       }
     }
     fetchData();
-  }, [addTaskModal, APIResponseData]);
+  }, [addTaskModal, accessToken, updateDependency]);
 
   return (
     <>
@@ -38,9 +39,10 @@ function TaskBoard() {
             isType="OPEN"
             data={APIResponseData}
             addTaskModal={setAddTaskModal}
+            dependency={setUpdateDependency}
           />
-          <DataDisplay isType="PROGRESS" data={APIResponseData} />
-          <DataDisplay isType="RESOLVED" data={APIResponseData} />
+          <DataDisplay isType="PROGRESS" data={APIResponseData} dependency={setUpdateDependency}/>
+          <DataDisplay isType="RESOLVED" data={APIResponseData} dependency={setUpdateDependency}/>
         </div>
       </Layout>
       {addTaskModal && <TaskModal showModal={setAddTaskModal} isType="ADD"/>}

@@ -23,7 +23,8 @@ function Login() {
     onSubmit: async (values) => {
       const result = await loginAPI(values);
       if (result?.status === 200) {
-        dispatch(setAccessToken(result?.data?.token));
+        console.log(result);
+        dispatch(setAccessToken(result?.data?.accessToken));
         navigate("/", { replace: true });
       }
     },

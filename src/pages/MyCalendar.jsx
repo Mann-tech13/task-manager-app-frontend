@@ -33,7 +33,7 @@ function MyCalendar() {
       }
     }
     fetchEvents();
-  }, [calendarModal]);
+  }, [calendarModal, accessToken]);
 
   const handleSelect = ({ start, end }) => {
     setFormData({ start, end, title: "", description: "" });
