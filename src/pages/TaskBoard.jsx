@@ -4,15 +4,17 @@ import TaskModal from "../components/modal/TaskModal";
 import DataDisplay from "../components/data/DataDisplay";
 import { useEffect } from "react";
 import { getAllTasksAPI } from "../apis/TaskPlaning/TaskAPI";
+import { useSelector } from "react-redux";
 
 function TaskBoard() {
+  const accessToken = useSelector((state) => state.accessToken.token);
   const [addTaskModal, setAddTaskModal] = useState(false);
   const [APIResponseData, setAPIResponseData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       // let apiData = []
-      const result = await getAllTasksAPI();
+      const result = await getAllTasksAPI(accessToken);
       if(result?.status === 200){
         const priorityOrder = ["P1", "P2", "P3"];
         const sortByPriority = (a, b) => {

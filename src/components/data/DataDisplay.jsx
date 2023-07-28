@@ -4,32 +4,34 @@ import { deleteResolvedTasksAPI, getTaskAPI, updateTasksAPI } from "../../apis/T
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import TaskModal from "../modal/TaskModal";
+import { useSelector } from "react-redux";
 
 // import rightForward from "../../assets/right-forward.svg";
 
 function DataDisplay({ isType, data, addTaskModal }) {
+  const accessToken = useSelector((state) => state.accessToken.token);
   const [details, setDetails] = useState({});
   const [detailsModal, setDetailsModal] = useState(false);
 
   const handleTaskForwardStatus = async (taskId, data, event) => {
     event.stopPropagation();
     data.category = isType === "OPEN" ? "PROGRESS" : "RESOLVED";
-    await updateTasksAPI(taskId, data);
+    await updateTasksAPI(taskId, data, accessToken);
   };
   const handleTaskBackwardStatus = async (taskId, data, event) => {
     event.stopPropagation();
     data.category = isType === "PROGRESS" ? "OPEN" : "PROGRESS";
-    await updateTasksAPI(taskId, data);
+    await updateTasksAPI(taskId, data, accessToken);
   };
   const handleDataDetailsClick = async (id) => {
-    const result = await getTaskAPI(id);
+    const result = await getTaskAPI(id, accessToken);
     if (result.status === 200) {
       setDetails(result?.data);
       setDetailsModal(true);
     }
   };
   const clearResolvedTask = async () => {
-    await deleteResolvedTasksAPI();
+    await deleteResolvedTasksAPI(accessToken);
   }
   return (
     <div className="flex flex-col gap-4 md:w-[350px] w-full">

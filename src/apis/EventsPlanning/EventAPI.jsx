@@ -1,17 +1,32 @@
 import axios from "axios";
 
-export const getAllEventsAPI = async () => {
+export const getAllEventsAPI = async (accessToken) => {
   try {
-    const response = await axios.get(process.env.REACT_APP_API + `c/getEvents`);
+    const response = await axios.get(
+      process.env.REACT_APP_API + `c/getEvents`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return response;
   } catch (error) {
     return error;
   }
 };
 
-export const addNewEventAPI = async (values) => {
+export const addNewEventAPI = async (accessToken, values) => {
   try {
-    const response = await axios.post(process.env.REACT_APP_API + `c/addEvent`, values);
+    const response = await axios.post(
+      process.env.REACT_APP_API + `c/addEvent`,
+      values,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return response;
   } catch (error) {
     return error;

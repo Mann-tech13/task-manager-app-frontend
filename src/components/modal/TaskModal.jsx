@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { CrossIcon } from "../../assets/icons/icons";
 import dropDownIcon from "../../assets/angle-down.svg";
 import { addNewTaskAPI, deleteTaskAPI, updateTasksAPI } from "../../apis/TaskPlaning/TaskAPI";
+import { useSelector } from "react-redux";
 
 const validationSchema = yup.object({
   title: yup.string().required("Title is required"),
@@ -15,6 +16,8 @@ const validationSchema = yup.object({
 });
 
 function TaskModal({ showModal, showDetails, isType, data }) {
+  const accessToken = useSelector((state) => state.accessToken.token);
+
   const priority = [
     { label: "P1", value: "P1" },
     { label: "P2", value: "P2" },
@@ -42,9 +45,9 @@ function TaskModal({ showModal, showDetails, isType, data }) {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       if(isType === "ADD") {
-        await addNewTaskAPI(values);
+        await addNewTaskAPI(values, accessToken);
       }else if(isType === "OPEN") {
-        await updateTasksAPI(data._id, values)
+        await updateTasksAPI(data._id, values, accessToken)
       }
       showModal(false);
 
@@ -52,7 +55,7 @@ function TaskModal({ showModal, showDetails, isType, data }) {
   });
   const handleCloseClick = async () => {
     if(data){
-      await deleteTaskAPI(data._id);
+      await deleteTaskAPI(data._id, accessToken);
     }
     showModal(false);
   }
