@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { CrossIcon } from "../../assets/icons/icons";
 import { addNewEventAPI } from "../../apis/EventsPlanning/EventAPI";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 const validationSchema = yup.object({
   title: yup.string().required("Task is required"),
@@ -12,6 +13,8 @@ const validationSchema = yup.object({
 });
 
 function CalendarEventModal({ showModal, setEvents, formData }) {
+  const accessToken = useSelector((state) => state.accessToken.token);
+
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -26,7 +29,7 @@ function CalendarEventModal({ showModal, setEvents, formData }) {
             description: values.description,
             createdAt: moment().valueOf()/1000,
         }
-        await addNewEventAPI(newEvent);
+        await addNewEventAPI(accessToken, newEvent);
         setEvents((prevEvents) => [...prevEvents, newEvent])
         showModal(false)
     },

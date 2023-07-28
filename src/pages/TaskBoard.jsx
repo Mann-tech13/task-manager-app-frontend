@@ -4,15 +4,19 @@ import TaskModal from "../components/modal/TaskModal";
 import DataDisplay from "../components/data/DataDisplay";
 import { useEffect } from "react";
 import { getAllTasksAPI } from "../apis/TaskPlaning/TaskAPI";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function TaskBoard() {
+  const accessToken = useSelector((state) => state.accessToken.token);
+  const navigate = useNavigate()
   const [addTaskModal, setAddTaskModal] = useState(false);
   const [APIResponseData, setAPIResponseData] = useState([]);
+  const [updateDependency, setUpdateDependency] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
-      // let apiData = []
-      const result = await getAllTasksAPI();
+      const result = await getAllTasksAPI(accessToken);
       if(result?.status === 200){
         const priorityOrder = ["P1", "P2", "P3"];
         const sortByPriority = (a, b) => {
@@ -25,8 +29,13 @@ function TaskBoard() {
         setAPIResponseData(sortedData);
       }
     }
-    fetchData();
-  }, [addTaskModal, APIResponseData]);
+    if(accessToken){
+      fetchData();
+    }
+    else{
+      navigate("/login")
+    }
+  }, [addTaskModal, accessToken, updateDependency]);
 
   return (
     <>
@@ -36,9 +45,10 @@ function TaskBoard() {
             isType="OPEN"
             data={APIResponseData}
             addTaskModal={setAddTaskModal}
+            dependency={setUpdateDependency}
           />
-          <DataDisplay isType="PROGRESS" data={APIResponseData} />
-          <DataDisplay isType="RESOLVED" data={APIResponseData} />
+          <DataDisplay isType="PROGRESS" data={APIResponseData} dependency={setUpdateDependency}/>
+          <DataDisplay isType="RESOLVED" data={APIResponseData} dependency={setUpdateDependency}/>
         </div>
       </Layout>
       {addTaskModal && <TaskModal showModal={setAddTaskModal} isType="ADD"/>}

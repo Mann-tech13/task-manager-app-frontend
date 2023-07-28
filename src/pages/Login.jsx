@@ -3,16 +3,17 @@ import { Form, Formik, useFormik } from "formik";
 import * as yup from "yup";
 import { AuthSVG } from "../assets/icons/icons";
 import { Link, useNavigate } from "react-router-dom";
-import {loginAPI} from "../apis/Auth/AuthAPI";
-
+import { loginAPI } from "../apis/Auth/AuthAPI";
+import { useDispatch } from "react-redux";
+import { setAccessToken } from "../redux/action";
 
 const validationSchema = yup.object({
   email: yup.string().required("Email is required"),
   password: yup.string().required("Password is required"),
 });
 function Login() {
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -21,8 +22,10 @@ function Login() {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       const result = await loginAPI(values);
-      if(result?.status === 200){
-        navigate("/")
+      if (result?.status === 200) {
+        console.log(result);
+        dispatch(setAccessToken(result?.data?.accessToken));
+        navigate("/", { replace: true });
       }
     },
   });
@@ -80,8 +83,13 @@ function Login() {
                   <p>Login</p>
                 </button>
                 <div>
-                  Don't have an account? <Link to="/register"><span className="text-linkLine underline cursor-pointer">Create here</span>
-                </Link></div>
+                  Don't have an account?{" "}
+                  <Link to="/register">
+                    <span className="text-linkLine underline cursor-pointer">
+                      Create here
+                    </span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
