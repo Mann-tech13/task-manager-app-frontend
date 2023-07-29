@@ -51,7 +51,7 @@ function TaskBoard() {
           <DataDisplay isType="RESOLVED" data={APIResponseData} dependency={setUpdateDependency}/>
         </div>
       </Layout>
-      {addTaskModal && <TaskModal showModal={setAddTaskModal} isType="ADD"/>}
+      {addTaskModal && <TaskModal showModal={setAddTaskModal} isType="ADD" dependency={setUpdateDependency}/>}
     </>
   );
 }

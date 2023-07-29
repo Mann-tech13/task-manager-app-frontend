@@ -60,6 +60,7 @@ function TaskModal({ showModal, showDetails, isType, data, dependency }) {
     if(data){
       await deleteTaskAPI(data._id, accessToken);
     }
+    dependency((val) => !val)
     showModal(false);
   }
   return (
