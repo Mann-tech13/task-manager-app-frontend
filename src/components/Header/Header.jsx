@@ -1,9 +1,25 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import { Cross, Hamburger } from "../../assets/icons/icons";
 import { useNavigate } from "react-router-dom";
+import { profileAPI } from "../../apis/Auth/AuthAPI";
+import { useSelector } from "react-redux";
 
 function Header(props) {
   const navigate = useNavigate();
+  const accessToken = useSelector((state) => state.accessToken.token);
+  const [firstName, setFirstName] = useState("")
+
+  useEffect(() => {
+    async function fetchProfile(){
+      const result = await profileAPI(accessToken)
+      if(result?.status === 200){
+        setFirstName(result?.data[0]?.name?.charAt(0)?.toUpperCase());
+      }
+    }
+    fetchProfile()
+  }, [accessToken])
+  
 
   return (
     <>
@@ -19,7 +35,7 @@ function Header(props) {
               <p
                 className={`text-textDark bg-[#635fc7]/[0.75] w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
               >
-                M
+                {firstName}
               </p>
             </div>
           </div>
@@ -45,7 +61,7 @@ function Header(props) {
           <p
             className={`text-textDark  bg-[#635fc7]/[0.75] w-[38px] h-[38px] text-center grid place-items-center rounded-[10px] text-20-400`}
           >
-            M
+            {firstName}
           </p>
         </div>
       </nav>
