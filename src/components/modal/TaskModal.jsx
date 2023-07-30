@@ -67,7 +67,7 @@ function TaskModal({ showModal, showDetails, isType, data, dependency }) {
     <Modal showModal={showModal}>
       <Formik enableReinitialize={true} onSubmit>
         <Form onSubmit={formik.handleSubmit}>
-          <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black  bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
+          <div className="flex flex-col justify-between max-h-[calc(100vh-40px)] overflow-y-scroll no-scrollbar gap-4 p-[25px] border border-black  bg-lightSecondary focus:outline-none rounded-10 sm:min-w-[600px]">
             <div className="flex justify-between">
               {isType === "OPEN" ? (
                 <p className="text-20-600  text-textDark">
@@ -126,9 +126,10 @@ function TaskModal({ showModal, showDetails, isType, data, dependency }) {
               <div className="relative  text-textDark">
                 <textarea
                   type="text"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10  bg-primary"
+                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 bg-primary"
                   name="description"
                   placeholder="Build UI for onboarding flow"
+                  rows="6"
                   value={formik.values.description}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}

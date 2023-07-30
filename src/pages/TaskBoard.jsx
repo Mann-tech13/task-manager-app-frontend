@@ -11,8 +11,11 @@ function TaskBoard() {
   const accessToken = useSelector((state) => state.accessToken.token);
   const navigate = useNavigate()
   const [addTaskModal, setAddTaskModal] = useState(false);
-  const [APIResponseData, setAPIResponseData] = useState([]);
+  const [APIResponseData, setAPIResponseData] = useState();
   const [updateDependency, setUpdateDependency] = useState(false)
+  const [detailsModal, setDetailsModal] = useState(false)
+  const [details, setDetails] = useState({})
+  const [inheritType, setInheritType] = useState("")
 
   useEffect(() => {
     async function fetchData() {
@@ -43,15 +46,27 @@ function TaskBoard() {
         <div className="flex sm:flex-row flex-col gap-4 xl:justify-between sm:justify-start flex-wrap text-textDark xl:mt-5 sm:mt-28 mt-5">
           <DataDisplay
             isType="OPEN"
+             detailsModal={setDetailsModal}
             data={APIResponseData}
             addTaskModal={setAddTaskModal}
+            details={setDetails}
             dependency={setUpdateDependency}
+            inheritType={setInheritType}
           />
-          <DataDisplay isType="PROGRESS" data={APIResponseData} dependency={setUpdateDependency}/>
-          <DataDisplay isType="RESOLVED" data={APIResponseData} dependency={setUpdateDependency}/>
+          <DataDisplay isType="PROGRESS" data={APIResponseData} dependency={setUpdateDependency} detailsModal={setDetailsModal} details={setDetails} inheritType={setInheritType}/>
+          <DataDisplay isType="RESOLVED" data={APIResponseData} dependency={setUpdateDependency} detailsModal={setDetailsModal} details={setDetails} inheritType={setInheritType}/>
         </div>
       </Layout>
       {addTaskModal && <TaskModal showModal={setAddTaskModal} isType="ADD" dependency={setUpdateDependency}/>}
+      {detailsModal && (
+        <TaskModal
+          showModal={setDetailsModal}
+          showDetails={true}
+          isType={inheritType}
+          data={details}
+          dependency={setUpdateDependency}
+        />
+      )}
     </>
   );
 }

@@ -19,7 +19,7 @@ function Modal(props) {
 
   return (
     <div
-      className="fixed inset-0 z-[50] flex items-center justify-center w-screen h-screen overflow-y-scroll"
+      className="fixed inset-0 z-[50] flex items-center overflow-y-scroll justify-center w-screen h-screen"
       onClick={() => {
         props.showModal(false);
         if (props.setActionButtonToggle) {
@@ -33,7 +33,7 @@ function Modal(props) {
         }`}
       ></div>
       <div
-        className="absolute flex flex-col justify-center sm:w-fit shadow-lg outline-none focus:outline-none w-[calc(100%-32px)]"
+        className="absolute flex flex-col overflow-y-scroll justify-center sm:w-fit shadow-lg outline-none focus:outline-none w-[calc(100%-32px)] h-screen"
         onClick={(e) => {
           e.stopPropagation();
         }}
