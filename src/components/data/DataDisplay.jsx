@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { LeftBackwardSVG, RightForwardSVG } from "../../assets/icons/icons";
 import {
   deleteResolvedTasksAPI,
@@ -7,7 +7,6 @@ import {
 } from "../../apis/TaskPlaning/TaskAPI";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import TaskModal from "../modal/TaskModal";
 import { useSelector } from "react-redux";
 
 // import rightForward from "../../assets/right-forward.svg";

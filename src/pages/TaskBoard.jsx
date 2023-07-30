@@ -38,6 +38,7 @@ function TaskBoard() {
     else{
       navigate("/login")
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addTaskModal, accessToken, updateDependency]);
 
   return (
