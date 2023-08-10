@@ -45,7 +45,7 @@ function Login() {
                 </p>
                 <input
                   type="email"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
+                  className="block w-full p-4 appearance-none text-textDark text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
                   name="email"
                   placeholder="planify@gmail.com"
                   value={formik.values.email}
@@ -62,7 +62,7 @@ function Login() {
                 <p className="text-textGreyLight text-12-500">Enter Password</p>
                 <input
                   type="password"
-                  className="block w-full p-4 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
+                  className="block w-full p-4 appearance-none text-12-500 text-textDark focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
                   name="password"
                   placeholder="Enter strong password"
                   value={formik.values.password}
