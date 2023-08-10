@@ -40,7 +40,7 @@ function Login() {
 
             <div className="w-full mt-8 px-6 flex flex-col gap-5">
               <div className="flex flex-col gap-2">
-                <p className="text-textGreyLight text-12-500">
+                <p className=" text-textDark text-12-500">
                   Enter your email
                 </p>
                 <input
@@ -59,7 +59,7 @@ function Login() {
                 ) : null}
               </div>
               <div className="flex flex-col gap-2">
-                <p className="text-textGreyLight text-12-500">Enter Password</p>
+                <p className=" text-textDark text-12-500">Enter Password</p>
                 <input
                   type="password"
                   className="block w-full p-4 appearance-none text-12-500 text-textDark focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
@@ -82,7 +82,7 @@ function Login() {
                 >
                   <p>Login</p>
                 </button>
-                <div>
+                <div className=" text-textDark">
                   Don't have an account?{" "}
                   <Link to="/register">
                     <span className="text-linkLine underline cursor-pointer">
