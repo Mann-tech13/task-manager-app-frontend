@@ -43,7 +43,7 @@ function Register() {
                 </p>
                 <input
                   type="text"
-                  className="block w-full p-3 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
+                  className="block w-full p-3 text-textDark appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
                   name="name"
                   placeholder="Smith"
                   value={formik.values.name}
@@ -62,7 +62,7 @@ function Register() {
                 </p>
                 <input
                   type="email"
-                  className="block w-full p-3 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
+                  className="block w-full p-3 text-textDark appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
                   name="email"
                   placeholder="planify@gmail.com"
                   value={formik.values.email}
@@ -80,7 +80,7 @@ function Register() {
                 <p className="text-textGreyLight text-12-500">Enter Password</p>
                 <input
                   type="password"
-                  className="block w-full p-3 appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
+                  className="block w-full p-3 text-textDark appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
                   name="password"
                   placeholder="Enter strong password"
                   value={formik.values.password}
