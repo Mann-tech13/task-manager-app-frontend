@@ -100,7 +100,7 @@ function Register() {
                 >
                   <p>Register</p>
                 </button>
-                <div className=" text-textDark>
+                <div className=" text-textDark">
                   Alredy have an account? <Link to="/login"><span className="text-linkLine underline cursor-pointer">Login here</span>
                 </Link></div>
               </div>
