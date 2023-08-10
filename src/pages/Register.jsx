@@ -38,7 +38,7 @@ function Register() {
 
             <div className="w-full mt-7 px-6 flex flex-col gap-3">
               <div className="flex flex-col gap-2">
-                <p className="text-textGreyLight text-12-500">
+                <p className=" text-textDark text-12-500">
                   Enter your name
                 </p>
                 <input
@@ -57,7 +57,7 @@ function Register() {
                 ) : null}
               </div>
               <div className="flex flex-col gap-2">
-                <p className="text-textGreyLight text-12-500">
+                <p className=" text-textDark text-12-500">
                   Enter your email
                 </p>
                 <input
@@ -77,7 +77,7 @@ function Register() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <p className="text-textGreyLight text-12-500">Enter Password</p>
+                <p className=" text-textDark text-12-500">Enter Password</p>
                 <input
                   type="password"
                   className="block w-full p-3 text-textDark appearance-none text-12-500 focus:outline-none rounded-10 border-theme border-b-2 bg-primary"
@@ -100,7 +100,7 @@ function Register() {
                 >
                   <p>Register</p>
                 </button>
-                <div>
+                <div className=" text-textDark>
                   Alredy have an account? <Link to="/login"><span className="text-linkLine underline cursor-pointer">Login here</span>
                 </Link></div>
               </div>
