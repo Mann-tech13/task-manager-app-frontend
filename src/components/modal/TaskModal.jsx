@@ -25,18 +25,7 @@ function TaskModal({ showModal, showDetails, isType, data, dependency }) {
     { label: "P3", value: "P3" },
   ];
 
-  useEffect(() => {
-    if (showDetails) {
-      // console.log(data);
-      formik.setFieldValue("title", data?.title);
-      formik.setFieldValue("projectName", data?.projectName);
-      formik.setFieldValue("priority", data?.priority);
-      formik.setFieldValue("description", data?.description);
-      formik.setFieldValue("createdAt", data?.createdAt);
-    }
-  },[accessToken]);
-
-  const formik = useFormik({
+    const formik = useFormik({
     initialValues: {
       title: "",
       projectName: "",
@@ -56,6 +45,18 @@ function TaskModal({ showModal, showDetails, isType, data, dependency }) {
 
     },
   });
+
+  useEffect(() => {
+    if (showDetails) {
+      formik.setFieldValue("title", data?.title);
+      formik.setFieldValue("projectName", data?.projectName);
+      formik.setFieldValue("priority", data?.priority);
+      formik.setFieldValue("description", data?.description);
+      formik.setFieldValue("createdAt", data?.createdAt);
+    }
+  },[accessToken, data?.createdAt, data?.description, data?.priority, data?.projectName, data?.title, formik, showDetails]);
+
+
   const handleCloseClick = async () => {
     if(data){
       await deleteTaskAPI(data._id, accessToken);

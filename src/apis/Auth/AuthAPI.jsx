@@ -14,12 +14,16 @@ export const registerAPI = async (values) => {
 
 export const loginAPI = async (values) => {
   try {
+    console.log(process.env.REACT_APP_API + `u/login`);
+
     const response = await axios.post(
       process.env.REACT_APP_API + `u/login`,
       values
     );
+    console.log(response);
+    
     return response;
-  } catch (error) {
+  } catch (error) {    
     return error;
   }
 };

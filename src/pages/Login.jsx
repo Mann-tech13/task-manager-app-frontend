@@ -20,7 +20,7 @@ function Login() {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values) => {      
       const result = await loginAPI(values);
       if (result?.status === 200) {
         console.log(result);
